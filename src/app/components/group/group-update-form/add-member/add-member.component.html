@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back"
+      class="ion-margin-start"
+      slot="start"
+      color="secondary"
+      (click)="close()"
+    ></ion-icon>
+    <ion-title>{{ "group.update.select" | translate }}</ion-title>
+    <ion-icon
+      name="checkmark-done-outline"
+      class="ion-margin-end"
+      color="secondary"
+      slot="end"
+      (click)="select()"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <mat-selection-list [(ngModel)]="selected">
+    <mat-list-option
+      *ngFor="let character of characters"
+      [value]="character.id"
+    >
+      <h3 matLine>{{ character.general.name }}</h3>
+    </mat-list-option>
+  </mat-selection-list>
+</ion-content>

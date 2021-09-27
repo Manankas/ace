@@ -1,0 +1,53 @@
+<div
+  *ngIf="message && userId"
+  class="msg"
+  [style]="
+    message.convId[0] !== userId
+      ? 'justify-content: flex-start;'
+      : 'justify-content: flex-end;'
+  "
+>
+  <span
+    *ngIf="message.convId[0] !== userId"
+    style="
+      position: absolute;
+      top: -15px;
+      left: 75px;
+      font-size: 12px;
+      color: grey;
+    "
+    >{{ senderName }}</span
+  >
+  <div class="msg-position">
+    <div class="msg-box" *ngIf="message.convId[0] === userId; else notUserId">
+      <div style="padding-right: 25px">
+        <div class="msg-container msg-container-right">
+          {{ message.content }}
+        </div>
+        <div class="msg-right"></div>
+      </div>
+      <div style="height: 100%">
+        <ion-avatar class="avatar">
+          <img [src]="'assets/male_user.svg'" />
+        </ion-avatar>
+      </div>
+    </div>
+
+    <ng-template #notUserId>
+      <div class="msg-box" *ngIf="message.convId[0] !== userId">
+        <div style="height: 100%">
+          <ion-avatar class="avatar">
+            <img [src]="'assets/male_user.svg'" />
+          </ion-avatar>
+        </div>
+
+        <div style="padding-left: 35px">
+          <div class="msg-container msg-container-left">
+            {{ message.content }}
+          </div>
+          <div class="msg-left"></div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

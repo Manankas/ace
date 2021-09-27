@@ -1,0 +1,41 @@
+<ion-slides [options]="slideOpts" style="padding: 3px 0">
+  <ion-slide class="flex justify-center">
+    <ion-card
+      button
+      style="
+        width: 110px;
+        height: 110px;
+        border-radius: 25px;
+        box-shadow: 0 5px 10px;
+      "
+      (click)="onClickAdd()"
+    >
+      <div
+        class="flex justify-center items-center"
+        style="width: 110px; height: 110px"
+      >
+        <mat-icon style="transform: scale(2); color: var(--ion-color-primary)">
+          add_a_photo
+        </mat-icon>
+      </div>
+    </ion-card>
+  </ion-slide>
+
+  <ion-slide
+    *ngFor="let img of srcImages"
+    class="flex justify-center"
+    (click)="onClickImage(img)"
+  >
+    <ion-card
+      button
+      style="
+        width: 110px;
+        height: 110px;
+        border-radius: 25px;
+        box-shadow: 0 5px 10px;
+      "
+    >
+      <img style="width: 110px; height: 110px; object-fit: cover" [src]="img" />
+    </ion-card>
+  </ion-slide>
+</ion-slides>

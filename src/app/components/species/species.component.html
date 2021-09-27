@@ -1,0 +1,14 @@
+<ion-item
+  style="
+    --background: #ffffff5e;
+    border-top: 1px solid #e6e4e4;
+    border-bottom: 1px solid #e6e4e4;
+  "
+  (click)="presentSpeciesListModal()"
+  button
+  lines="none"
+>
+  <ion-icon slot="start" name="leaf"></ion-icon>
+  <ion-label>{{ "species.singular" | translate }}</ion-label>
+  <ion-icon slot="end" name="chevron-forward-outline"> </ion-icon>
+</ion-item>

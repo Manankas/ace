@@ -1,0 +1,31 @@
+<div
+  *ngIf="!active"
+  style="position: relative; width: 65px; height: 65px; margin: 10px"
+  (click)="onShowItem()"
+  tooltip
+  [tooltipHtml]="tooltipMsg"
+  positionV="top"
+  [arrow]="showArrow"
+  [event]="tooltipEvent"
+  [duration]="duration"
+>
+  <img src="../../../assets/images/achievementItem.svg" style="filter: grayscale(1)" />
+</div>
+
+<div
+  *ngIf="active"
+  style="position: relative; width: 65px; height: 65px; margin: 10px"
+  (click)="onShowItem()"
+  tooltip
+  [tooltipHtml]="tooltipMsg"
+  positionV="top"
+  [arrow]="showArrow"
+  [event]="tooltipEvent"
+  [duration]="duration"
+>
+  <img
+    style="width: 100%; height: 100%; object-fit: cover"
+    src="../../../assets/images/achievementItem.svg"
+    style="filter: grayscale(0)"
+  />
+</div>

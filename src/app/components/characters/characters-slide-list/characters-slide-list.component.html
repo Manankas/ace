@@ -1,0 +1,28 @@
+<ion-list-header style="margin-top: 15px">
+  <ion-label style="font-weight: 900; font-size: 20px">{{'character.plural'|translate}}</ion-label>
+</ion-list-header>
+
+<app-card-slider
+  [showName]="true"
+  cardType="profil"
+  [datas]="characters"
+  [slideOpts]="slideOpts"
+  [loading]="loading"
+  (clickAdd)="addCharacterModal()"
+  (clickCard)="infoCharacterModal($event)"
+></app-card-slider>
+
+<div class="flex justify-center" style="margin: 15px 0">
+  <ion-button
+    style="
+      text-transform: none;
+      --color: var(--ion-color-dark) !important;
+      --border-width: 1px;
+    "
+    shape="round"
+    fill="outline"
+    (click)="presentCharactersModal()"
+  >
+    {{'character.all'|translate}}</ion-button
+  >
+</div>

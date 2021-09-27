@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline" class="ion-margin-end"></ion-icon>
+    </ion-button>
+    <ion-title>{{ "alarm.title" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let alarm of alarms; let iAlarm = index">
+    <ion-item lines="none">
+      <ion-label
+        class="ion-padding-vertical"
+        (click)="openPickerForUpdate(iAlarm)"
+        style="font-size: 32px; font-weight: 300"
+      >
+        {{ alarm.hour }}
+      </ion-label>
+      <ion-toggle
+        style="--background-checked: var(--ion-color-tertiary)"
+        (ionChange)="onClickActivate(iAlarm)"
+        [(ngModel)]="alarm.active"
+      ></ion-toggle>
+    </ion-item>
+    <mat-accordion displayMode="flat" panelState="collapsed">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <ion-item lines="none" style="font-weight: bold">
+            {{ "alarm.expand" | translate }}
+          </ion-item>
+        </mat-expansion-panel-header>
+        <!-- check repetition -->
+        <ion-item lines="none" style="--ripple-color: transparent">
+          <ion-checkbox
+            (ionChange)="onClickRepeat(iAlarm)"
+            slot="start"
+            [(ngModel)]="alarm.repeat"
+          >
+          </ion-checkbox>
+          <ion-label class="ion-margin-start">{{
+            "alarm.repeat" | translate
+          }}</ion-label>
+        </ion-item>
+        <!-- jour de repetitions -->
+        <div *ngIf="alarm.repeat" class="flex">
+          <span
+            *ngFor="
+              let day of 'local.shortDays' | translate;
+              let dayIndex = index
+            "
+            style="margin: 0 3px"
+          >
+            <ngx-avatar
+              (clickOnAvatar)="onClickDay(iAlarm, dayIndex)"
+              [size]="35"
+              [name]="day"
+              [bgColor]="
+                alarm.days[dayIndex] ? 'var(--ion-color-tertiary)' : '#dedede'
+              "
+              fgColor="var(--ion-color-dark)"
+              [round]="true"
+            ></ngx-avatar>
+          </span>
+        </div>
+        <!-- sonnerie -->
+        <ion-item lines="none">
+          <ion-item slot="end" lines="none" (click)="onClickVibrate(iAlarm)">
+            <ion-label class="ion-margin-end">{{
+              "alarm.vibrate" | translate
+            }}</ion-label>
+            <ion-checkbox [(ngModel)]="alarm.vibrate"> </ion-checkbox>
+          </ion-item>
+        </ion-item>
+
+        <ion-item (click)="updateLabel(iAlarm)" button>
+          <ion-label>{{ alarm.label }}</ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-button (click)="removeAlarm(iAlarm)" fill="clear">
+            <mat-icon slot="start">delete</mat-icon>
+          </ion-button>
+        </ion-item>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ion-card>
+
+  <ion-datetime
+    hidden
+    [cancelText]="'buttons.cancel' | translate"
+    [doneText]="'OK'"
+    display-format="H:mm"
+    picker-format="H:mm"
+    [value]="currentDate"
+    (ionCancel)="reset()"
+    (ionChange)="onChangeTime()"
+  ></ion-datetime>
+
+  <ion-fab
+    vertical="bottom"
+    horizontal="center"
+    slot="fixed"
+    (click)="openForAdd()"
+  >
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon color="secondary" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title align="center">
+      {{ "notification.susRequest" | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="followers.length; else noRequest" lines="none">
+    <ion-item-sliding *ngFor="let follower of followers">
+      <ion-item button style="height: 60px" class="flex items-center">
+        <ion-avatar
+          slot="start"
+          style="--border-radius: 10px; width: 70px; height: 50px"
+        >
+          <img
+            style="width: 100%; height: 100%; object-fit: cover"
+            [src]="follower.avatar || 'assets/images/defaultCar.jpg'"
+          />
+        </ion-avatar>
+        <ion-label style="margin: 0">
+          <h3 style="margin: 0" class="text-ellipsis">{{ follower.name }}</h3>
+          <p>{{ follower.date }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end" style="height: 60px">
+        <div
+          class="row items-center"
+          style="
+            height: 100%;
+            justify-content: space-between;
+            background: var(--ion-color-light);
+          "
+        >
+          <ion-chip (click)="updateRequest(follower.id)" color="success">
+            <ion-icon name="checkmark-outline" style="margin: 0"></ion-icon>
+          </ion-chip>
+          <ion-chip (click)="updateRequest(follower.id, false)" color="danger">
+            <ion-icon name="trash-outline" style="margin: 0"></ion-icon>
+          </ion-chip>
+        </div>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ng-template #noRequest>
+    <ion-row class="justify-center items-center" style="height: 100%">
+      <h4>{{ "notification.noRequest" | translate }}</h4>
+    </ion-row>
+  </ng-template>
+</ion-content>

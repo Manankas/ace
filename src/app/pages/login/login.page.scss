@@ -1,0 +1,40 @@
+.text-center {
+  text-align: center;
+}
+
+ion-img {
+  height: 180px;
+}
+form {
+  margin-top: 4%;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  ion-button {
+    margin-top: 35px;
+    height: 48px;
+    font-size: 18px;
+    text-transform: initial;
+    border-radius: 50px;
+    box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
+    --box-shadow: none;
+  }
+}
+ion-icon {
+  font-size: 30px; //Preferred size here
+}
+ion-item {
+  border-radius: 50px;
+  height: 60px;
+  border: 1px gainsboro solid;
+  box-shadow: 1px 8px 8px 0 rgba(0, 0, 0, 0.08);
+  --highlight-height: 0px;
+
+  ion-input {
+    font-size: 18px;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-start: 5px;
+    height: 100%;
+  }
+}

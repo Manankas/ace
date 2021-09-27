@@ -1,0 +1,52 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12" style="padding: 10px">
+      <div
+        style="width: 100%; height: 35vh; contain: content"
+        class="flex justify-center items-center"
+      >
+        <img
+          style="max-width: 100%; object-fit: contain"
+          [src]="
+            newImage
+              ? 'data:Image/png;base64,' + newImage
+              : 'assets/upload-project-cover.svg'
+          "
+        />
+      </div>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="newImage === '' || !newImage; else elseBtn">
+    <ion-row>
+      <ion-col size="12">
+        <h2 style="font-weight: 900">{{'editProfile.upload'|translate}}</h2>
+        <div style="width: 100%; font-weight: 100; font-size: 14px">
+          {{'imageModal.nb'|translate}}
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12"
+        ><ion-button expand="block" (click)="getPicture()"
+          >{{'imageModal.select'|translate}}</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
+  <ng-template #elseBtn>
+    <div>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button (click)="submitUpload()" expand="block">
+            {{'imageModal.download'|translate}}
+          </ion-button>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button fill="clear" (click)="getPicture()"
+            >{{'imageModal.other'|translate}}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </div>
+  </ng-template>
+</ion-grid>

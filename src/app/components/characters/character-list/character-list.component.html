@@ -1,0 +1,35 @@
+<mat-list>
+  <mat-list-item
+    *ngFor="let character of characters; let i = index"
+    (click)="infoCharacterModal(i)"
+    style="border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6"
+  >
+    <div
+      *ngIf="character.avatarGenerator; else noAvGen"
+      slot="start"
+      class="flex justify-center"
+      style="height: 50px"
+    >
+      <div
+        style="width: 50px; height: 50px"
+        [innerHTML]="avatarToSvg(character.avatarGenerator)"
+      ></div>
+    </div>
+
+    <ng-template #noAvGen>
+      <ngx-avatar
+        matListAvatar
+        *ngIf="character.avatar; else noAv"
+        [src]="character.avatar"
+      >
+      </ngx-avatar>
+      <ng-template #noAv>
+        <ngx-avatar matListAvatar [name]="character.general.name"> </ngx-avatar>
+      </ng-template>
+    </ng-template>
+    <h3 matLine>{{ character.general.name }}</h3>
+    <p matLine>
+      {{ character.general.description }}
+    </p>
+  </mat-list-item>
+</mat-list>

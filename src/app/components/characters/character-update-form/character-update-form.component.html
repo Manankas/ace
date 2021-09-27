@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 600; font-size: 16px">{{
+      "character.updateForm.title" | translate
+    }}</ion-title>
+    <ion-button slot="end" fill="clear" (click)="deleteConfirm()">
+      <ion-icon color="secondary" name="trash"></ion-icon>
+    </ion-button>
+
+    <ion-button slot="end" fill="clear" (click)="updateCharacter()">
+      <ion-icon color="secondary" name="save"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    style="width: 100%; height: 100px; margin: 20px"
+    class="
+      flex
+      justify-center
+      items-center;
+      filter:
+      drop-shadow(
+      0px
+      -2px
+      3px
+      #b2b2b2)
+    "
+  >
+    <ion-avatar
+      *ngIf="!characterClone.avatarGenerator"
+      style="width: 100px; height: 100px"
+    >
+      <img [src]="characterClone.avatar || 'assets/icon/Avatar.svg'" />
+    </ion-avatar>
+
+    <div
+      *ngIf="characterClone.avatarGenerator"
+      class="flex justify-center"
+      style="height: 100px"
+    >
+      <div style="width: 100px; height: 100px" [innerHTML]="avatarSvg"></div>
+    </div>
+  </div>
+
+  <ion-card>
+    <ion-item lines="none">
+      <h1 style="font-weight: 900; font-size: 20px">
+        {{ "image" | translate }}
+      </h1>
+    </ion-item>
+
+    <ion-item button lines="none" (click)="openImageModal()" detail>
+      <ion-icon name="camera-outline" slot="start"></ion-icon>
+      <ion-label>{{ "editProfile.upload" | translate }}</ion-label>
+    </ion-item>
+
+    <ion-item button lines="none" (click)="openAvatarGenerator()" detail>
+      <ion-icon name="happy-outline" slot="start"></ion-icon>
+      <ion-label>{{ "genAvatar" | translate }}</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <h1 style="font-weight: 900; font-size: 20px">
+        {{ "information" | translate }}s
+      </h1>
+    </ion-item>
+    <mat-accordion displayMode="flat" panelState="collapsed">
+      <mat-expansion-panel *ngFor="let catKey of categoryKeys">
+        <mat-expansion-panel-header>
+          <ion-item lines="none">
+            <mat-icon slot="start">{{ icons[catKey] }}</mat-icon>
+            {{ "character." + catKey + ".title" | translate }}
+          </ion-item>
+        </mat-expansion-panel-header>
+        <app-autogrow-textarea
+          *ngFor="let key of getKeys(characterClone[catKey])"
+          [label]="'character.' + catKey + '.' + key | translate"
+          [(modelValue)]="characterClone[catKey][key]"
+        >
+        </app-autogrow-textarea>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Additionnal  tools -->
+    <app-custom-field
+      path="characters"
+      [itemId]="characterClone.id"
+      [projectId]="projectId"
+      [customFields]="characterClone.customFields"
+    ></app-custom-field>
+  </ion-card>
+</ion-content>

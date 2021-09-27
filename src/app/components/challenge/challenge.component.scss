@@ -1,0 +1,18 @@
+.item-content {
+  overflow: hidden;
+  white-space: nowrap;
+  background-image: linear-gradient(
+    90deg,
+    rgb(80, 80, 80),
+    rgb(80, 80, 80) 85%,
+    white 98%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+ion-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px grey;
+  margin: 5px 20px;
+}

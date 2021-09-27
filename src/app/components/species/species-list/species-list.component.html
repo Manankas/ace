@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back"
+      slot="start"
+      class="ion-margin-start"
+      (click)="close()"
+    >
+    </ion-icon>
+    <ion-title>{{ "entities.species" | translate }}</ion-title>
+    <ion-icon name="search" slot="end" class="ion-margin-end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list lines="none" style="background: transparent">
+    <ion-chip
+      *ngFor="let spec of species; let i = index"
+      button
+      (click)="openSpeciesDetails(i)"
+      style="
+        height: 50px;
+        width: 100%;
+        border-radius: 50px;
+        margin: 5px 0px;
+        padding: 25px 20px;
+        background: white;
+      "
+      class="ion-margin-bottom"
+      outline
+    >
+      <span style="position: absolute; top: 4px; left: 15px">
+        <ngx-avatar
+          slot="start"
+          [round]="true"
+          [name]="spec.general.name || 'U'"
+          size="40"
+        ></ngx-avatar>
+      </span>
+
+      <ion-label style="line-height: 20px; margin-left: 40px">{{
+        spec.general.name
+      }}</ion-label>
+    </ion-chip>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentFormModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

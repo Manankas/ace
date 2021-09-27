@@ -1,0 +1,20 @@
+ion-item {
+  $color: gainsboro;
+  height: 60px;
+  border-bottom: 1px $color solid;
+  --highlight-height: 0px;
+  margin-bottom: 10px;
+  ion-input {
+    font-size: 18px;
+    --padding-top: 11px;
+    height: 100%;
+    width: 100%;
+    input:focus {
+      $color: var(--ion-color-primary);
+    }
+  }
+}
+
+ion-item:focus-within {
+  border-bottom: 2px var(--ion-color-primary) solid;
+}

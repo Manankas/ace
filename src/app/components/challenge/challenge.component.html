@@ -1,0 +1,134 @@
+<div style="height: calc(100vh - 160px); overflow-y: scroll">
+  <ng-container *ngIf="loading; else loaded">
+    <ion-card>
+      <ion-card-header class="ion-no-padding" style="height: 180px">
+        <ion-skeleton-text
+          animated
+          style="width: 100%; height: 100%"
+        ></ion-skeleton-text>
+      </ion-card-header>
+      <ion-card-title style="margin: 0px 10px; margin-top: 15px">
+        <ion-skeleton-text
+          animated
+          style="width: 60%; height: 24px"
+        ></ion-skeleton-text>
+      </ion-card-title>
+      <ion-card-content style="padding: 5px 10px">
+        <ion-skeleton-text
+          *ngFor="let i of [1, 2, 3, 4]"
+          animated
+          style="width: 100%; height: 24px"
+        ></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+    <ion-item style="margin-top: 10px" button lines="none">
+      <ion-avatar
+        slot="start"
+        style="--border-radius: 10px; width: 70px; height: 50px"
+      >
+        <ion-skeleton-text
+          animated
+          style="width: 100%; height: 100%"
+        ></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3 class="text-bold" style="margin: 0">
+          <ion-skeleton-text
+            animated
+            style="width: 60%; height: 24px"
+          ></ion-skeleton-text>
+        </h3>
+        <div matLine class="item-content">
+          <ion-skeleton-text
+            animated
+            style="width: 100%; height: 24px"
+          ></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ng-container>
+
+  <ng-template #loaded>
+    <ion-card
+      *ngIf="challenges.length > 0; else noChallenge"
+      (click)="showChallengeDetails(0)"
+    >
+      <ion-card-header class="ion-no-padding" style="height: 180px">
+        <img
+          style="width: 100%; height: 100%; object-fit: cover"
+          [src]="challenges[0].avatar || 'assets/images/book.jpg'"
+          matListAvatar
+        />
+      </ion-card-header>
+      <ion-card-title style="margin: 0px 10px; margin-top: 15px">{{
+        challenges[0].title
+      }}</ion-card-title>
+      <ion-card-content style="padding: 5px 10px">
+        {{ challenges[0].content }}
+      </ion-card-content>
+    </ion-card>
+    <ng-template #noChallenge>
+      <ion-row
+        class="justify-center items-center"
+        style="height: 100%"
+      >
+        <h4>{{'challenge.none'|translate}}</h4>
+      </ion-row>
+    </ng-template>
+
+    <ion-list *ngIf="challenges.length > 1" style="margin-top: 10px">
+      <ion-card-title class="ion-margin-start">
+        {{ "challenge.previous" | translate }}
+      </ion-card-title>
+      <ion-item
+        button
+        lines="none"
+        *ngFor="
+            let challenge of challenges.slice(1, challenges.length);
+            let i = index
+          "
+        (click)="showChallengeDetails(i + 1)"
+      >
+        <ion-avatar
+          slot="start"
+          style="--border-radius: 10px; width: 70px; height: 50px"
+        >
+          <img
+            style="width: 100%; height: 100%; object-fit: cover"
+            [src]="challenge.avatar || 'assets/images/book.jpg'"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h3 class="text-bold" style="margin: 0">{{ challenge.title }}</h3>
+          <div matLine class="item-content">
+            {{ challenge.content }}
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+  <!-- data loaded -->
+  <ion-infinite-scroll
+    threshold="50px"
+    (ionInfinite)="loadMoreChallenges($event)"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      [loadingText]="'chat.moreData' | translate"
+      style="min-height: 10px"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>
+
+<ion-fab
+  *ngIf="user?.isAdmin"
+  vertical="bottom"
+  horizontal="end"
+  slot="fixed"
+  (click)="openAddChallengeForm()"
+>
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

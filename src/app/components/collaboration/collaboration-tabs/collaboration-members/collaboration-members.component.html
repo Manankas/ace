@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'member.singular'|translate}}s</ion-title>
+  </ion-toolbar>
+</ion-header>
+<div style="height: calc(100vh - 161px)">
+  <ion-list lines="none">
+    <ion-item
+      *ngFor="let collabo of collaborators; let i = index"
+      style="font-size: 12px"
+      button
+    >
+      <ion-avatar slot="start">
+        <img [src]="collabo.user.avatar || 'assets/male_user.svg'" />
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">
+        <ion-text color="dark">
+          {{ collabo.user.nom }} {{ collabo.user.prenom }} </ion-text
+        ><br />
+        <ion-text color="medium">
+          {{
+            ("member.roles" | translate)[
+              collabo.member.banned ? 4 : collabo.member.role
+            ]
+          }}
+        </ion-text>
+      </ion-label>
+      <ion-button
+        *ngIf="collabo.member.role > 0; else active"
+        slot="end"
+        (click)="openMemberBottomSheet(i)"
+        fill="clear"
+      >
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+      <ng-template #active>
+        <ion-button (click)="updateRequest(i)" slot="end" fill="clear">
+          <ion-icon color="primary" name="checkbox-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="updateRequest(i, false)" slot="end" fill="clear">
+          <ion-icon color="danger" name="trash-bin-outline"></ion-icon>
+        </ion-button>
+      </ng-template>
+    </ion-item>
+  </ion-list>
+</div>

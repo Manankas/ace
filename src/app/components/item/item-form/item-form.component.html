@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      color="secondary"
+      name="arrow-back"
+      slot="start"
+      class="ion-margin-start"
+      (click)="close()"
+    ></ion-icon>
+    <ion-title>{{ "item.add.title" | translate }}</ion-title>
+    <ion-icon
+      name="save"
+      slot="end"
+      color="secondary"
+      class="ion-margin-end"
+      (click)="save()"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="formGroup">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">{{
+              "item.general.name" | translate
+            }}</ion-label>
+            <ion-input formControlName="nameCtrl"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">{{
+              "item.general.description" | translate
+            }}</ion-label>
+            <ion-input formControlName="descriptionCtrl"></ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

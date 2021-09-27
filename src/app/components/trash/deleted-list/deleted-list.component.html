@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <button mat-icon-button slot="start" (click)="close()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <mat-list>
+    <ng-container *ngFor="let item of data; let i = index">
+      <mat-list-item
+        *ngIf="item.archived"
+        (click)="alertConfirm(i)"
+        matRipple
+      >
+        <img *ngIf="item?.avatar; else noAvatar" matListAvatar [src]="item.avatar">
+        <ng-template #noAvatar>
+          <mat-icon matListIcon>info</mat-icon>
+        </ng-template>
+        <h3 matLine>{{item?.general?.name||item?.name||item?.title||item?.content}}</h3>
+        <mat-icon>chevron_right</mat-icon>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</ion-content>

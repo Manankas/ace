@@ -1,0 +1,120 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="end" fill="clear" routerLink="/register">
+      <ion-icon name="person-add" class="ion-margin-end"></ion-icon>
+      {{'login.createAccount'|translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-vertical">
+  <h1
+    style="font-size: 25px; font-weight: 900"
+    class="ion-text-center ion-margin-top ion-text-uppercase"
+  >
+    {{'login.authentication'|translate}}
+  </h1>
+  <ion-slides
+    *ngIf="isEntered"
+    [pager]="true"
+    [options]="slideOpts"
+    style="margin: 0; flex-grow: 1"
+  >
+    <ion-slide class="column">
+      <div style="height: 260px">
+        <img
+          style="height: 40%; object-fit: cover"
+          src="assets/images/welcome.svg"
+        />
+
+        <h1>{{'login.welcome'|translate}}</h1>
+
+        <p style="font-size: 14px; margin: 0 20px" class="ion-text-justify">
+          {{'login.welcomeBody'|translate}}
+        </p>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="flex justify-center">
+      <ion-img src="assets/authentication.svg"></ion-img>
+    </ion-slide>
+  </ion-slides>
+
+  <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSignIn()">
+    <ion-item class="ion-margin-bottom">
+      <ion-icon name="mail" style="margin-right: 10px"></ion-icon>
+      <ion-input
+        type="email"
+        ngDefaultControl
+        formControlName="email"
+        [placeholder]="'user.email'|translate"
+      ></ion-input>
+    </ion-item>
+    <ion-text
+      class="ion-text-center"
+      color="danger"
+      *ngIf="!!f.email.value && !!f.email.hasError('email')"
+    >
+      <p>{{'login.invalidEMail'|translate}}</p>
+    </ion-text>
+    <ion-item>
+      <ion-icon
+        style="margin-right: 10px"
+        [name]="showPassword ? 'eye' : 'eye-off'"
+        (click)="showPasswordFunction()"
+      >
+      </ion-icon>
+      <ion-input
+        ngDefaultControl
+        [type]="showPassword ? 'text' : 'password'"
+        formControlName="password"
+        [placeholder]="'user.password'|translate"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-button
+      shape="round"
+      type="submit"
+      expand="block"
+      [disabled]="!loginForm.valid"
+    >
+      {{'login.signIn'|translate}}
+      <ion-icon name="log-in-outline"></ion-icon>
+    </ion-button>
+  </form>
+
+  <ion-row *ngIf="isError">
+    <ion-col
+      class="ion-padding ion-text-center"
+      size-sm="12"
+      size-md="4"
+      offset-md="4"
+      color="danger"
+      [ngSwitch]="errorType"
+    >
+      <ion-text color="danger" *ngSwitchCase="errorTypes.emailNotVerifierd">
+        {{'login.verifyEmail'|translate}}
+      </ion-text>
+      <ion-text color="danger" *ngSwitchCase="errorTypes.wrongPassword">
+        {{'login.wrongPassword'|translate}}
+      </ion-text>
+      <ion-text color="danger" *ngSwitchCase="errorTypes.userNotFound">
+        {{'login.userNotFound'|translate}}
+      </ion-text>
+      <!-- <ion-text color="danger">
+        <br /><span class="">Vérifier votre connexion</span>
+      </ion-text> -->
+    </ion-col>
+  </ion-row>
+
+  <ion-button
+    style="font-size: 18px"
+    expand="full"
+    fill="clear"
+    routerLink="/reset-password"
+  >
+    {{'login.forgotPassword'|translate}}
+    <ion-icon style="font-size: 20px" name="help-outline"></ion-icon>
+  </ion-button>
+</ion-content>

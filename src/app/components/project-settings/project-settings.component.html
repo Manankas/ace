@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back"
+      slot="start"
+      class="ion-margin-start"
+      (click)="close()"
+      color="secondary"
+    ></ion-icon>
+    <ion-title>{{ "projectSettings.title" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list lines="none">
+    <ion-list-header>
+      {{ "projectSettings.data" | translate }}
+    </ion-list-header>
+
+    <ion-item (click)="openProjectCoverModal()" button>
+      <ion-icon name="images" class="ion-margin-end"></ion-icon>
+      <ion-label>
+        {{ "projectSettings.cover" | translate }}
+      </ion-label>
+      <ion-icon name="chevron-forward-sharp"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="openEditProjectModal()" button>
+      <ion-icon name="pencil" class="ion-margin-end"></ion-icon>
+      <ion-label>
+        {{ "projectSettings.edit" | translate }}
+      </ion-label>
+      <ion-icon name="chevron-forward-sharp"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header>
+    {{ "projectSettings.additional" | translate }}
+  </ion-list-header>
+
+  <ion-item button (click)="deleteConfirm()" lines="none">
+    <ion-icon name="archive" class="ion-margin-end"></ion-icon>
+    <ion-label>
+      {{ "projectSettings.archive" | translate }}
+    </ion-label>
+    <ion-icon name="chevron-forward-sharp"></ion-icon>
+  </ion-item>
+
+  <ion-list-header>
+    {{ "projectSettings.notification" | translate }}
+  </ion-list-header>
+
+  <ion-item lines="none">
+    <ng-container *ngIf="remainWord > 0; else finished">
+      <ion-icon slot="start" name="notifications"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        {{ "projectSettings.remember" | translate }}
+      </ion-label>
+      <ion-checkbox
+        [(ngModel)]="project.notify"
+        slot="end"
+        (ionChange)="notify()"
+      >
+      </ion-checkbox>
+    </ng-container>
+    <ng-template #finished>
+      <ion-label class="ion-text-wrap">
+        {{
+          "projectSettings.finished"
+            | translate
+              : {
+                  val: removeLastSOcc(
+                    ("project.sizeTypes" | translate)[project.sizeType]
+                  )
+                }
+        }}
+      </ion-label>
+    </ng-template>
+  </ion-item>
+</ion-content>

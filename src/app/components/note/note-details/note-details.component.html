@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <button (click)="close()" mat-icon-button slot="start">
+      <mat-icon style="color: var(--ion-color-secondary)">close</mat-icon>
+    </button>
+    <ion-title>{{ selectedNote.name }}</ion-title>
+    <button (click)="openTreeModal()" mat-icon-button slot="end">
+      <mat-icon style="color: var(--ion-color-secondary)"
+        >move_to_inbox</mat-icon
+      >
+    </button>
+    <button (click)="openNoteEditionModal()" mat-icon-button slot="end">
+      <mat-icon style="color: var(--ion-color-secondary)">mode_edit</mat-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-note-list
+    [notes]="notes"
+    [selectedNote]="selectedNote"
+    [projectId]="projectId"
+  >
+  </app-note-list>
+</ion-content>

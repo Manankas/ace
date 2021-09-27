@@ -1,0 +1,159 @@
+<ion-header
+  parallax
+  [maximumHeight]="200"
+  expandedColor="var(--ion-color-primary)"
+  titleColor="black"
+>
+  <ion-toolbar color="white" style="z-index: 100">
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon color="secondary" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title style="color: transparent; position: absolute; contain: content">
+      <h2
+        style="font-size: 20px; font-weight: 900; margin: 0; margin-top: 50px"
+      >
+        {{ challenge.title }}
+      </h2>
+      <p style="font-size: 14px; font-weight: normal">
+        {{ userChallenge.participation.title }}
+      </p>
+
+      <div
+        class="full-width flex justify-center items-center"
+        style="margin-top: 40px"
+      >
+        <ion-avatar style="width: 24px; height: 24px">
+          <img [src]="userChallenge.user.avatar || 'assets/male_user.svg'" />
+        </ion-avatar>
+        <div style="font-size: 14px; font-weight: normal; margin-left: 10px">
+          Par
+          {{
+            isCurrUserOwner
+              ? ("you" | translate)
+              : userChallenge.user.nom + " " + userChallenge.user.prenom
+          }}
+        </div>
+      </div>
+    </ion-title>
+
+    <ng-container *ngIf="isCurrUserOwner; else cInfo">
+      <ion-button (click)="updateMyChallenge()" slot="end" fill="clear">
+        <ion-icon style="color: black" name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button [matMenuTriggerFor]="menu" slot="end" fill="clear">
+        <mat-icon style="color: black">more_vert</mat-icon>
+      </ion-button>
+      <mat-menu #menu>
+        <button mat-menu-item (click)="shareChallenge()">
+          <mat-icon>share</mat-icon>
+          <span>{{ "profile.share" | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="removeParticipation()">
+          <mat-icon>delete_forever</mat-icon>
+          <span>{{ "trash.buttons.softDelete" | translate }}</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+
+    <ng-template #cInfo>
+      <ion-button slot="end" fill="clear" (click)="openChallengeInfo()">
+        <ion-icon style="color: black" name="alert-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="clear">
+        <ion-icon style="color: black" name="share-social-outline"></ion-icon>
+      </ion-button>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    style="margin: 5px 20px"
+    [innerHTML]="userChallenge.participation.content"
+  ></div>
+
+  <ion-item>
+    <mat-icon slot="start">favorite</mat-icon>
+    <ion-label>{{ userChallenge.participation.like.length }}</ion-label>
+  </ion-item>
+  <ion-list>
+    <ion-item lines="none" style="margin: 10px 5px">
+      <h2 style="font-weight: bold">{{ "challenge.author" | translate }}</h2>
+    </ion-item>
+
+    <ion-item button lines="none" detail (click)="openFollow()">
+      <ion-avatar slot="start">
+        <img
+          [src]="userChallenge.user.avatar || 'assets/images/userAvatar.png'"
+        />
+      </ion-avatar>
+      <ion-label style="padding-top: 6px; margin: 0; height: 60px">
+        <h3 style="margin: 0">
+          {{
+            isCurrUserOwner
+              ? ("you" | translate)
+              : userChallenge.user.prenom + " " + userChallenge.user.nom
+          }}
+        </h3>
+        <p>{{ toDate(userChallenge.participation.createdAt) }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding-vertical">
+    <ion-list-header lines="none" style="margin: 20px 5px">
+      <h2 style="font-weight: bold">
+        {{ "challenge.comments" | translate }} ({{ comments.length }})
+      </h2>
+    </ion-list-header>
+    <ion-item *ngFor="let com of comments; let i = index" button>
+      <ion-avatar (click)="openFollow(com.user.id)" slot="start">
+        <img [src]="com.user.avatar || 'assets/images/book.jpg'" />
+      </ion-avatar>
+      <ion-label (click)="openFollow(com.user.id)" class="ion-text-wrap">
+        <div class="ion-nowrap">
+          {{
+            currentUserId === com.user.id
+              ? ("you" | translate)
+              : com.user.nom + " " + com.user.prenom
+          }}
+        </div>
+        <ion-text color="medium">{{ com.comment.content }}</ion-text>
+      </ion-label>
+      <ng-container *ngIf="com.user.id === currentUserId">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" overlapTrigger>
+          <button (click)="deleteComment(i)" mat-menu-item>
+            <mat-icon>delete_forever</mat-icon>
+            <span>{{ "challenge.deleteComment" | translate }}</span>
+          </button>
+          <button (click)="setComment(i)" mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>{{ "challenge.editComment" | translate }}</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab
+    *ngIf="!isCurrUserOwner"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    (click)="onClickLikeBtn()"
+  >
+    <ion-fab-button [color]="likeIndex > -1 ? 'success' : 'primary'">
+      <ion-icon name="heart-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<app-footer-input
+  [placeholder]="'challenge.putComment' | translate"
+  (send)="updateComments()"
+  [(modelValue)]="comment.content"
+  (modelValueChange)="resetComment($event)"
+>
+</app-footer-input>

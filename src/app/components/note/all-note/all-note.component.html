@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <button slot="start" (click)="close()" mat-icon-button>
+      <mat-icon style="color: var(--ion-color-secondary)">arrow_back</mat-icon>
+    </button>
+    <ion-title>{{ "entities.notes" | translate }}</ion-title>
+    <button slot="end" (click)="openNoteTreeModal()" mat-icon-button>
+      <mat-icon style="color: var(--ion-color-secondary)"
+        >account_tree</mat-icon
+      >
+    </button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-note-list [projectId]="projectId" [notes]="notes"> </app-note-list>
+</ion-content>

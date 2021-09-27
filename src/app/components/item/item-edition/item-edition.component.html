@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon color="secondary" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 600; font-size: 16px">{{
+      "item.update.title" | translate
+    }}</ion-title>
+    <ion-button slot="end" fill="clear" (click)="deleteConfirm()">
+      <ion-icon color="secondary" name="trash"></ion-icon>
+    </ion-button>
+
+    <ion-button slot="end" fill="clear" (click)="updateItem()">
+      <ion-icon color="secondary" name="save"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    style="width: 100%; height: 100px; margin-top: 20px; margin-bottom: 20px"
+    class="
+      flex
+      justify-center
+      items-center;
+      filter:
+      drop-shadow(
+      0px
+      -2px
+      3px
+      #b2b2b2)
+    "
+  >
+    <ion-avatar (click)="openImageModal()" style="width: 100px; height: 100px">
+      <img [src]="item.avatar || 'assets/icon/Avatar.svg'" />
+    </ion-avatar>
+  </div>
+
+  <ion-card>
+    <ion-item lines="none">
+      <h1 style="font-weight: 900; font-size: 20px">
+        {{ "information" | translate }}s
+      </h1>
+    </ion-item>
+    <mat-accordion displayMode="flat" panelState="collapsed">
+      <mat-expansion-panel *ngFor="let catKey of categoryKeys">
+        <mat-expansion-panel-header>
+          <ion-item lines="none">
+            <ion-icon [name]="icons[catKey]" slot="start"></ion-icon>
+            {{ "item." + catKey + ".title" | translate }}
+          </ion-item>
+        </mat-expansion-panel-header>
+        <app-autogrow-textarea
+          *ngFor="let key of getKeys(item[catKey])"
+          [label]="'item.' + catKey + '.' + key | translate"
+          [(modelValue)]="itemClone[catKey][key]"
+        >
+        </app-autogrow-textarea>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Additionnal  tools -->
+    <app-custom-field
+      path="items"
+      [itemId]="itemClone.id"
+      [projectId]="projectId"
+      [customFields]="itemClone.customFields"
+    ></app-custom-field>
+  </ion-card>
+</ion-content>

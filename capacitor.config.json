@@ -1,0 +1,13 @@
+{
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "showSpinner": false
+    },
+    "LocalNotifications": {
+      "smallIcon": "",
+      "iconColor": "#488AFF",
+      "sound": ""
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="full-width" style="background: white">
+  <div class="full-width" style="height: 180px">
+    <img
+      style="width: 100%; height: 100%; object-fit: cover"
+      [src]="data.challenge.avatar || 'assets/images/book.jpg'"
+    />
+  </div>
+
+  <ion-label>
+    <h2 style="font-weight: bold; margin-left: 20px">
+      {{ data.challenge.title }}
+    </h2>
+  </ion-label>
+
+  <div style="margin: 5px 20px">
+    {{ data.challenge.content }}
+  </div>
+
+  <div class="full-width row-reverse">
+    <ion-button
+      style="margin: 20px; --border-radius: 20px"
+      fill="outline"
+      (click)="close()"
+    >
+      {{'close'|translate}}
+    </ion-button>
+  </div>
+</div>

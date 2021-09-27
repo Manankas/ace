@@ -1,0 +1,30 @@
+<ion-list-header
+  style="
+    --background: #ffffff5e;
+    border-top: 1px solid #e6e4e4;
+    border-bottom: 1px solid #e6e4e4;
+  "
+>
+  <ion-label
+    style="font-weight: 900; font-size: 20px"
+    tooltip
+    [tooltipHtml]="'project.archived' | translate"
+    positionV="top"
+    [arrow]="true"
+    event="press"
+    [duration]="600"
+  >
+    {{ "project.my" | translate }}
+  </ion-label>
+
+  <ion-avatar
+    (click)="openProjectArchiveListModal()"
+    class="list-header-avatar"
+  >
+    <ion-icon
+      name="cube-outline"
+      style="font-size: 24px"
+      color="secondary"
+    ></ion-icon>
+  </ion-avatar>
+</ion-list-header>

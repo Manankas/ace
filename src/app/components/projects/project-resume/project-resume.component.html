@@ -1,0 +1,19 @@
+<app-autogrow-textarea [(modelValue)]="resume"></app-autogrow-textarea>
+<ion-item lines="none">
+  <button
+    slot="end"
+    mat-icon-button
+    color="primary"
+    [disabled]="project.resume === resume"
+    (click)="cancel()"
+  ><mat-icon>refresh</mat-icon></button>
+  <button
+    slot="end"
+    mat-icon-button
+    color="accent"
+    [disabled]="project.resume === resume"
+    (click)="save()"
+  >
+    <mat-icon>save</mat-icon>
+  </button>
+</ion-item>

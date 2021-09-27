@@ -1,0 +1,37 @@
+<div class="card-box" style="height: auto">
+  <ion-card
+    button
+    style="
+      padding: 0;
+      box-shadow: 0 6px 8px #b6b6b6;
+      border-radius: 15px;
+      width: 88%;
+    "
+  >
+    <ion-card-content
+      style="height: 140px; background: grey"
+      [style]="add ? 'padding: 0.5px;' : 'padding: 0px;'"
+    >
+      <div style="width: 100%; height: 100%; background: white">
+        <ion-img
+          *ngIf="coverSrc && coverSrc !== ''; else localSrc"
+          style="width: 100%; height: 100%; object-fit: cover"
+          [src]="coverSrc"
+        ></ion-img>
+        <ng-template #localSrc>
+          <ion-img
+            style="width: 100%; height: 100%; object-fit: cover"
+            src="assets/images/book.jpg"
+          ></ion-img>
+        </ng-template>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <div
+    *ngIf="!add"
+    class="card-box-label"
+    style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis"
+  >
+    {{ projectName ? projectName : "" }}
+  </div>
+</div>

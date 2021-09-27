@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" (click)="close()" fill="clear">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>{{'customField.customize'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row
+    *ngFor="let field of customFields; let i = index"
+    class="ion-justify-content-center ion-align-items-center"
+  >
+    <ion-col size="2" class="ion-padding-start">{{i+1}}.</ion-col>
+    <ion-col size="8">
+      <mat-form-field style="width: 100%">
+        <mat-label>{{'customField.name'|translate}}</mat-label>
+        <input
+          matInput
+          [placeholder]="'customField.pName'|translate"
+          [(ngModel)]="field.name"
+        >
+      </mat-form-field>
+    </ion-col>
+    <ion-col size="2">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button (click)="removeField(i)" mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>{{'trash.buttons.softDelete'|translate}}</span>
+        </button>
+      </mat-menu>
+    </ion-col>
+  </ion-row>
+  <button
+    (click)="addField()"
+    mat-mini-fab
+    style="margin-left: 20px; margin-top: 30px"
+    color="accent"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <mat-icon slot="start" class="ion-margin-start" (click)="close()">
+      arrow_back
+    </mat-icon>
+    <ion-title class="ion-padding">{{
+      "entities.wLocations" | translate
+    }}</ion-title>
+    <mat-icon slot="end" class="ion-margin-end" (click)="openWLocationTree()"
+      >account_tree</mat-icon
+    >
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <!--<ion-searchbar placeholder="Search..." [(ngModel)]="filterTerm" animated="true">
+
+  </ion-searchbar>--->
+
+  <ion-list lines="none" style="background: transparent">
+    <ng-container *ngFor="let location of wLocations; let i = index">
+      <ion-chip
+        button
+        (click)="openWLocationDetails(i)"
+        style="
+          height: 50px;
+          width: 100%;
+          border-radius: 50px;
+          margin: 5px 0px;
+          padding: 25px 20px;
+          background: white;
+        "
+        class="ion-margin-bottom"
+        outline
+      >
+        <span style="position: absolute; top: 4px; left: 15px">
+          <ngx-avatar
+            slot="start"
+            [round]="true"
+            [name]="location.general.name"
+            size="40"
+          ></ngx-avatar>
+        </span>
+
+        <ion-label
+          style="line-height: 20px; margin-left: 40px; margin-top: 5px"
+        >
+          <h3 style="margin: 0">{{ location.general.name }}</h3>
+          <p>{{ location.general.description }} jhgjhg</p>
+        </ion-label>
+      </ion-chip>
+    </ng-container>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="wLocationAddFormModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

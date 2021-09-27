@@ -1,0 +1,20 @@
+<ion-list-header style="margin-top: 15px">
+  <ion-label style="font-weight: 900; font-size: 20px">{{
+    "session.singular" | translate
+  }}</ion-label>
+</ion-list-header>
+
+<ion-item
+  button
+  lines="none"
+  detail
+  style="
+    --background: #ffffff5e;
+    border-top: 1px solid #e6e4e4;
+    border-bottom: 1px solid #e6e4e4;
+  "
+  (click)="presentSessionsListModal()"
+>
+  <ion-icon name="timer" slot="start" color="black"></ion-icon>
+  <ion-label> {{ "session.list.title" | translate }} </ion-label>
+</ion-item>

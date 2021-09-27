@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back"
+      slot="start"
+      class="ion-margin-start"
+      (click)="close()"
+    ></ion-icon>
+    <ion-title>{{ "wLocation.add.title" | translate }}</ion-title>
+    <ion-icon
+      name="information-circle-outline"
+      slot="end"
+      class="ion-margin-end"
+    ></ion-icon>
+    <ion-icon name="save" slot="end" class="ion-margin-end" (click)="save()">
+    </ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="formGroup">
+        <ion-list class="ion-margin">
+          <ion-item>
+            <ion-label position="floating">{{
+              "wLocation.general.name" | translate
+            }}</ion-label>
+            <ion-input formControlName="nameCtrl"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">
+              {{ "wLocation.general.description" | translate }}
+            </ion-label>
+            <ion-textarea formControlName="descriptionCtrl"></ion-textarea>
+          </ion-item>
+
+          <ion-button (click)="save()" expand="full" class="ion-margin-top">
+            Créer
+          </ion-button>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

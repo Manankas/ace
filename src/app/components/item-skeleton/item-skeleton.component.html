@@ -1,0 +1,39 @@
+<ion-item lines="none">
+  <ngx-skeleton-loader
+    slot="start"
+    appearance="circle"
+    [theme]="{
+      'border-radius': iconType === 'square' ? '0px' : iconSize,
+      height: iconSize,
+      width: iconSize,
+      'background-color': '#dedede',
+      border: '1px solid white'
+    }"
+  ></ngx-skeleton-loader>
+  <ion-label style="margin: 0">
+    <h3 style="margin: 0; padding: 0; height: 25px">
+      <ngx-skeleton-loader
+        appearance="circle"
+        [theme]="{
+          'border-radius': '0px',
+          height: '25px',
+          width: '250px',
+          'background-color': '#dedede',
+          border: '1px solid white'
+        }"
+      ></ngx-skeleton-loader>
+    </h3>
+    <p>
+      <ngx-skeleton-loader
+        appearance="circle"
+        [theme]="{
+          'border-radius': '0px',
+          height: '18px',
+          width: '150px',
+          'background-color': '#dedede',
+          border: '1px solid white'
+        }"
+      ></ngx-skeleton-loader>
+    </p>
+  </ion-label>
+</ion-item>

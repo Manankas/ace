@@ -1,0 +1,14 @@
+<ion-item
+  (click)="presentItemsListModal()"
+  style="
+    --background: #ffffff5e;
+    border-top: 1px solid #e6e4e4;
+    border-bottom: 1px solid #e6e4e4;
+  "
+  button
+  lines="none"
+>
+  <ion-icon slot="start" name="diamond"></ion-icon>
+  <ion-label>{{ "item.list" | translate }}</ion-label>
+  <ion-icon slot="end" name="chevron-forward-outline"> </ion-icon>
+</ion-item>

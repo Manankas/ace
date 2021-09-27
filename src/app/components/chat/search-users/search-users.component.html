@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="close" color="secondary"> </ion-icon>
+    </ion-button>
+    <ion-item>
+      <ion-input
+        [placeholder]="'chat.pseudoReceiver' | translate"
+        [(ngModel)]="pseudo"
+        [ngModelOptions]="{ standalone: true }"
+      >
+      </ion-input>
+      <ion-button (click)="findUsers()">
+        <ion-icon name="search" color="secondary"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item class="ion-margin-top">
+    <ion-text color="medium">
+      <h3>{{ "chat.searchResult" | translate }}</h3>
+    </ion-text>
+  </ion-item>
+
+  <div
+    class="ion-text-center"
+    style="margin-top: 60%"
+    *ngIf="loading; else list"
+  >
+    <ion-spinner color="warning" name="bubbles"></ion-spinner>
+  </div>
+  <ng-template #list>
+    <ion-list lines="none">
+      <ion-item
+        button
+        *ngFor="let user of foundedUsers; let i = index"
+        (click)="openFollowModal(i)"
+      >
+        <ion-avatar slot="start">
+          <img [src]="user.avatar || 'assets/male_user.svg'" />
+        </ion-avatar>
+        <ion-label class="ion-text-wrap">
+          <ion-text color="primary">
+            {{ user.pseudo }}
+          </ion-text>
+          <ion-text style="font-size: 13px; color: grey">
+            <p>{{ user.email }}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+</ion-content>

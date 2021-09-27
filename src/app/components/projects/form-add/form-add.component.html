@@ -1,0 +1,229 @@
+<ion-content style="width: 100%; height: 100px">
+  <div style="width: 100%; padding: 10px; position: fixed; z-index: 10">
+    <ion-icon name="close" style="font-size: 24px" (click)="close()"></ion-icon>
+  </div>
+
+  <ion-card style="display: flex; justify-content: center; z-index: 1">
+    <div style="width: 300px">
+      <ion-img src="assets/images/addProject.jpg"></ion-img>
+    </div>
+  </ion-card>
+
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-direction: column;
+    "
+  >
+    <h3 style="width: 100%; font-weight: 900; text-align: center">
+      Nouveau projet
+    </h3>
+    <p style="width: 100%; text-align: center">
+      {{ "project.add.goodLuck" | translate }}
+    </p>
+    <ion-card style="background: white">
+      <form>
+        <mat-vertical-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="firstFormGroup" state="import_contacts">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel
+                >{{ "information" | translate }}s</ng-template
+              >
+
+              <mat-form-field style="width: 100%">
+                <mat-label>{{ "item.general.name" | translate }}</mat-label>
+                <input
+                  matInput
+                  [placeholder]="'project.add.pName' | translate"
+                  formControlName="nameCtrl"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label>{{
+                  "item.general.description" | translate
+                }}</mat-label>
+                <input
+                  matInput
+                  [placeholder]="'project.add.pDescription' | translate"
+                  formControlName="descriptionCtrl"
+                />
+              </mat-form-field>
+              <div>
+                <button class="btn" mat-button matStepperNext>
+                  {{ "project.add.next" | translate }}
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="secondFormGroup" state="square_foot">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>
+                {{ "project.add.estimation" | translate }}
+              </ng-template>
+              <ion-item>
+                <ion-label color="medium" position="floating">{{
+                  "project.startAt" | translate
+                }}</ion-label>
+                <ion-datetime
+                  displayFormat="DD/MM/YYYY"
+                  [min]="date.getFullYear()"
+                  [max]="date.getFullYear() + 40"
+                  done-text="ok"
+                  [cancelText]="'buttons.cancel' | translate"
+                  formControlName="startAtCtrl"
+                ></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label color="medium" position="floating">
+                  {{ "project.endAt" | translate }}
+                </ion-label>
+                <ion-datetime
+                  displayFormat="DD/MM/YYYY"
+                  [min]="date.getFullYear()"
+                  [max]="date.getFullYear() + 40"
+                  done-text="ok"
+                  [cancelText]="'buttons.cancel' | translate"
+                  formControlName="endAtCtrl"
+                ></ion-datetime>
+              </ion-item>
+              <ion-row>
+                <ion-col size="8">
+                  <mat-form-field style="width: 100%">
+                    <mat-label>{{ "project.size" | translate }}</mat-label>
+                    <input
+                      type="number"
+                      min="1"
+                      matInput
+                      formControlName="sizeCtrl"
+                      required
+                    />
+                  </mat-form-field>
+                </ion-col>
+                <ion-col size="4">
+                  <mat-form-field>
+                    <mat-label>{{ "project.unit" | translate }}</mat-label>
+                    <mat-select formControlName="sizeTypesCtrl" required>
+                      <mat-option
+                        *ngFor="
+                          let size of 'project.sizeTypes' | translate;
+                          let i = index
+                        "
+                        [value]="i"
+                      >
+                        {{ size }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </ion-col>
+              </ion-row>
+              <div>
+                <button class="btn" mat-button matStepperPrevious>
+                  {{ "project.add.back" | translate }}
+                </button>
+                <button class="btn" mat-button matStepperNext>
+                  {{ "project.add.next" | translate }}
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="thirdFormGroup" state="category">
+            <form [formGroup]="thirdFormGroup">
+              <ng-template matStepLabel>
+                {{ "project.gender" | translate }}
+              </ng-template>
+              <mat-form-field style="width: 100%">
+                <mat-label>{{ "project.gender" | translate }}</mat-label>
+                <mat-select formControlName="genderCtrl" required>
+                  <mat-option
+                    *ngFor="
+                      let gender of 'project.genders' | translate;
+                      let i = index
+                    "
+                    [value]="i"
+                  >
+                    {{ gender }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div>
+                <button class="btn" mat-button matStepperPrevious>
+                  {{ "project.add.back" | translate }}
+                </button>
+                <button class="btn" mat-button matStepperNext>
+                  {{ "project.add.next" | translate }}
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step state="book">
+            <ng-template matStepLabel>
+              {{ "project.add.cover" | translate }}
+            </ng-template>
+            <div
+              class="flex justify-center"
+              (click)="getPicture()"
+              style="margin: 10px 0"
+            >
+              <div
+                style="
+                  height: 140px;
+                  width: 100px;
+                  border-radius: 15px;
+                  box-shadow: 1px 1px 10px grey;
+                  contain: content;
+                "
+              >
+                <img
+                  *ngIf="srcUpload"
+                  [src]="'data:Image/png;base64,' + srcUpload"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+            </div>
+            <div
+              style="width: 100%; margin: 10px 0"
+              class="flex justify-center"
+            >
+              <ion-button color="primary" (click)="getPicture()">
+                <ion-icon slot="start" name="image"></ion-icon>
+                {{ "project.add.choose" | translate }}
+              </ion-button>
+            </div>
+            <div>
+              <button class="btn" mat-button matStepperPrevious>
+                {{ "project.add.back" | translate }}
+              </button>
+              <button class="btn" mat-button matStepperNext>
+                {{ "project.add.next" | translate }}
+              </button>
+            </div>
+          </mat-step>
+
+          <mat-step>
+            <ng-template matStepLabel>
+              {{ "project.add.finished" | translate }}
+            </ng-template>
+            <p>{{ "project.add.haveFinished" | translate }}</p>
+            <div>
+              <button class="btn" mat-button matStepperPrevious>
+                {{ "project.add.back" | translate }}
+              </button>
+              <button class="btn" mat-button (click)="stepper.reset()">
+                {{ "project.add.reset" | translate }}
+              </button>
+              <ion-button color="primary" (click)="submit()">
+                {{ "project.add.create" | translate }}
+              </ion-button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+      </form>
+    </ion-card>
+  </div>
+</ion-content>

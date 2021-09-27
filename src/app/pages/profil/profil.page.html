@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{user?.pseudo}}</ion-title>
+    <ion-button
+      style="margin: 0; height: 38px"
+      fill="clear"
+      slot="end"
+      (click)="logout()"
+    >
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- banner image  -->
+  <ion-row>
+    <ion-col
+      *ngIf="onLine && bannerLoaded"
+      size="12"
+      class="banner-col"
+      [style.background-image]="'url(' + srcBanner + ')'"
+    >
+    </ion-col>
+    <ion-col
+      *ngIf="!onLine && bannerLoaded"
+      size="12"
+      class="banner-col flex justify-center"
+      style="max-height: 116px"
+    >
+      <img
+        class="full-height full-width"
+        style="object-fit: cover"
+        :src="assets/images/book-profil.jpg"
+      />
+    </ion-col>
+    <!-- <ion-img src="https://unsplash.it/975/300"></ion-img> -->
+    <ion-col size="12" class="banner-col" *ngIf="!bannerLoaded">
+      <ion-skeleton-text
+        animated
+        style="width: 100%; height: 116px"
+      ></ion-skeleton-text>
+    </ion-col>
+  </ion-row>
+  <!-- profile picture  -->
+  <ion-row>
+    <ion-col size="12" class="avatar-col">
+      <ion-avatar class="avatar-pic">
+        <img *ngIf="avatarLoaded" [src]="srcAvatar" />
+        <ion-skeleton-text *ngIf="!avatarLoaded" animated></ion-skeleton-text>
+      </ion-avatar>
+    </ion-col>
+  </ion-row>
+  <!-- full name and description -->
+  <ion-row>
+    <ion-col class="text-center full-name" size="12">
+      {{user?.prenom}} {{user?.nom}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="text-center">
+      <b>{{user?.description}}</b>
+    </ion-col>
+  </ion-row>
+  <!-- tools  -->
+  <ion-row class="tools">
+    <ion-col size="4" [routerLink]="['/edit-profile']">
+      <ion-icon name="pencil"></ion-icon>
+      <div>{{'profile.edit'|translate}}</div>
+    </ion-col>
+    <ion-col size="4" (click)="followersModal()">
+      <ion-icon name="people"></ion-icon>
+      <div>{{'profile.followers'|translate}}</div>
+    </ion-col>
+    <ion-col size="4" (click)="shareChallenge()">
+      <ion-icon name="share-social"></ion-icon>
+      <div>{{'profile.share'|translate}}</div>
+    </ion-col>
+  </ion-row>
+
+  <ion-card>
+    <ion-list-header>
+      <h1>{{'profile.achievements'|translate}}</h1>
+    </ion-list-header>
+    <ion-row class="ion-justify-content-center ion-wrap">
+      <app-achievement-item
+        [active]="user?.banner"
+        [tooltipMsg]="achievementMsg('editProfile.pdc'|translate, user?.banner)"
+      ></app-achievement-item>
+      <app-achievement-item
+        [active]="user?.avatar"
+        [tooltipMsg]="achievementMsg('editProfile.pdp'|translate, user?.avatar)"
+      ></app-achievement-item>
+      <app-achievement-item
+        [active]="achievements.participated"
+        [tooltipMsg]="achievementMsg('profile.participation'|translate,achievements.participated)"
+      ></app-achievement-item>
+      <app-achievement-item
+        [active]="achievements.pProject"
+        [tooltipMsg]="achievementMsg('profile.project'|translate,achievements.pProject)"
+      ></app-achievement-item>
+      <app-achievement-item
+        [active]="achievements.cProject"
+        [tooltipMsg]="achievementMsg('profile.collaboration'|translate,achievements.cProject)"
+      ></app-achievement-item>
+    </ion-row>
+  </ion-card>
+
+  <ion-card>
+    <app-user-challenges
+      (achievement)="achievements.participated = $event"
+      *ngIf="user"
+      [user]="getUser()"
+    >
+    </app-user-challenges>
+  </ion-card>
+</ion-content>

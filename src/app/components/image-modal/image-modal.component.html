@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back"
+      color="secondary"
+      class="ion-margin-start"
+      slot="start"
+      (click)="close()"
+    ></ion-icon>
+    <ion-title class="ion-padding">{{
+      "imageModal.select" | translate
+    }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-tab-group
+    mat-align-tabs="center"
+    dynamicHeight
+    mat-stretch-tabs
+    *ngIf="images"
+  >
+    <mat-tab [label]="'imageModal.gallery' | translate">
+      <app-image-gallery [images]="images" (select)="selectFromGallery($event)">
+      </app-image-gallery>
+    </mat-tab>
+    <mat-tab [label]="'imageModal.upload' | translate">
+      <app-image-upload (upload)="upload($event)"> </app-image-upload>
+    </mat-tab>
+    <!--<mat-tab label="Pixels"> Content 3 </mat-tab>-->
+  </mat-tab-group>
+</ion-content>

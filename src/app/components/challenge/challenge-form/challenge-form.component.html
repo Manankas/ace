@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <ion-title align="center">
+      {{ "challenge." + mode + ".title" | translate }}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <mat-card class="ion-margin-bottom" style="padding: 0; height: 200px">
+    <img
+      style="height: 100%; width: 100%; object-fit: cover"
+      [src]="
+        avatar
+          ? 'data:Image/png;base64,' + avatar
+          : challenge.avatar || 'assets/images/book.jpg'
+      "
+    />
+    <mat-card-content class="justify-center" style="display: flex !important">
+      <ion-chip
+        (click)="changeAvatar()"
+        style="
+          width: 50px;
+          height: 50px;
+          border-radius: 25px;
+          position: absolute;
+          bottom: -25px;
+          background: #e0e0e0;
+          box-shadow: 0 1px 1px;
+          border: 2px solid white;
+        "
+      >
+        <mat-icon>{{ mode === "update" ? "image" : "add_a_photo" }}</mat-icon>
+      </ion-chip>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-form-field style="width: 100%; margin-top: 15px">
+    <mat-label>{{ "challenge.form.title" | translate }}</mat-label>
+    <input
+      [(ngModel)]="challenge.title"
+      matInput
+      [placeholder]="'challenge.form.tPlaceholder' | translate"
+    />
+  </mat-form-field>
+
+  <app-autogrow-textarea
+    [label]="'challenge.form.context' | translate"
+    [(modelValue)]="challenge.content"
+  ></app-autogrow-textarea>
+
+  <ion-item>
+    <ion-label color="dark" class="ion-text-wrap">
+      <h3 style="margin-bottom: 0; font-weight: bold">
+        {{ "challenge.publish.title" | translate }}
+      </h3>
+      <p>{{ "challenge.publish.message" | translate }}</p>
+    </ion-label>
+    <ion-checkbox
+      color="warning"
+      [(ngModel)]="challenge.publish"
+      slot="end"
+    ></ion-checkbox>
+  </ion-item>
+
+  <ion-button expand="block" (click)="save()">
+    {{ "challenge." + mode + ".button" | translate }}
+  </ion-button>
+</ion-content>

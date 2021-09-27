@@ -1,0 +1,63 @@
+<div style="padding: 10px 30px">
+  <ion-item-sliding
+    style="
+      border-radius: 20px;
+      border: 2px solid white;
+      background: linear-gradient(
+        90deg,
+        var(--ion-color-danger) 40%,
+        var(--ion-color-primary) 40%
+      );
+    "
+  >
+    <ion-item-options side="start">
+      <ion-item-option
+        style="text-transform: none; border-radius: 0 15px 15px 0"
+        (click)="clickButtonTrash($event)"
+        color="danger"
+        ><ion-icon name="trash-outline"></ion-icon
+      ></ion-item-option>
+    </ion-item-options>
+
+    <ion-item lines="none" style="border-radius: 15px">
+      <ion-img
+        slot="start"
+        [src]="images[status]"
+        style="width: 20px"
+      ></ion-img>
+
+      <ion-icon
+        *ngIf="important"
+        color="danger"
+        name="alert-outline"
+      ></ion-icon>
+      <ion-label
+        style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+      >
+        {{ label }}
+      </ion-label>
+
+      <ion-icon
+        slot="end"
+        color="primary"
+        name="pencil-outline"
+        (click)="clickButtonEdit()"
+      ></ion-icon>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option
+        style="text-transform: none"
+        (click)="clickButtonFirst($event)"
+        color="primary"
+        >{{ labelBtnFirst }}</ion-item-option
+      >
+      <ion-item-option
+        style="text-transform: none; border-radius: 0 15px 15px 0"
+        (click)="clickButtonSecond($event)"
+        color="tertiary"
+        >{{ labelBtnSecond }}</ion-item-option
+      >
+    </ion-item-options>
+  </ion-item-sliding>
+</div>

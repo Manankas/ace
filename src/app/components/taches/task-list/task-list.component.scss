@@ -1,0 +1,37 @@
+@keyframes removeAnimation {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(800px, 0);
+  }
+}
+
+@keyframes addAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(800px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.remove-item {
+  animation: removeAnimation 1s linear;
+  animation-fill-mode: forwards;
+}
+
+.add-item {
+  animation: addAnimation 1s linear;
+  animation-fill-mode: both;
+
+  @for $i from 1 to 200 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 75ms;
+    }
+  }
+}

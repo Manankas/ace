@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      (click)="close()"
+      name="close"
+      slot="start"
+      color="secondary"
+      class="ion-margin-start"
+    ></ion-icon>
+    <ion-icon
+      name="qr-code-outline"
+      color="secondary"
+      slot="end"
+      class="ion-margin-end"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="code">
+    <ion-img src="assets/images/encrypt.svg"></ion-img>
+
+    <ion-text>
+      <h1 style="font-weight: bold">
+        {{ "collaboration.requestCode.title" | translate }}
+      </h1>
+      <ion-label color="medium">
+        {{ "collaboration.requestCode.slogan" | translate }}
+        <!--Two minds stand stronger than one. -->
+      </ion-label>
+    </ion-text>
+
+    <ion-list>
+      <ion-item>
+        <ion-input
+          class="code"
+          [(ngModel)]="code"
+          [ngModelOptions]="{ standalone: true }"
+          [placeholder]="'collaboration.requestCode.pCode' | translate"
+        ></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label color="medium">
+          {{ "collaboration.requestCode.case" | translate }}</ion-label
+        >
+      </ion-item>
+    </ion-list>
+
+    <ion-button (click)="dismiss()" mode="ios" expand="full">
+      {{ "collaboration.requestCode.send" | translate }}
+    </ion-button>
+  </div>
+</ion-content>

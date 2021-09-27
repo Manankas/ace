@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color="secondary" (click)="dismiss()" slot="start" fill="clear">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 700">{{
+      "chapter.all" | translate
+    }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list lines="none" style="background: transparent">
+    <ng-container *ngFor="let chapter of chapters; let i = index">
+      <ion-chip
+        *ngIf="!chapter.archived"
+        button
+        (click)="openUpdateBottomSheet(i)"
+        style="
+          height: 50px;
+          width: 100%;
+          border-radius: 50px;
+          margin: 5px 0px;
+          padding: 25px 20px;
+          background: white;
+        "
+        class="ion-margin-bottom"
+        outline
+      >
+        <span style="position: absolute; top: -4px; left: 15px">
+          <ngx-avatar
+            [name]="chapter.num"
+            [round]="true"
+            [size]="50"
+            bgColor="transparent"
+            fgColor="var(--ion-color-primary)"
+          ></ngx-avatar>
+        </span>
+        <ion-icon
+          color="primary"
+          style="font-size: 40px"
+          name="bookmark-outline"
+        >
+        </ion-icon>
+
+        <ion-label style="line-height: 20px; margin-left: 20px">
+          <h3 style="margin: 0; font-weight: 600">{{ chapter.title }}</h3>
+          <p style="margin: 0">
+            {{ "chapter.numberOf" | translate }}
+            {{ ("project.sizeTypes" | translate)[sizeType] }} :
+            {{ chapter.wordCount }}
+          </p>
+        </ion-label>
+      </ion-chip>
+    </ng-container>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openBottomSheet()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

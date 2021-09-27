@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'notification.title'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-img
+      src="assets/images/notification.svg"
+      style="height: 200px"
+    ></ion-img>
+  </ion-card>
+  <div
+    style="font-size: 1.8em; font-weight: bolder"
+    class="ion-text-center ion-margin-vertical"
+  >
+    {{'notification.title'|translate}}
+  </div>
+  <div class="ion-text-center ion-margin-bottom">
+    {{'notification.slogan'|translate}}
+    <!--The past shows a glimpse of future.-->
+  </div>
+  <ion-card>
+    <ion-list lines="none">
+      <ion-item-group>
+        <ion-list-header style="font-size: 1.2em; font-weight: bolder">
+          {{'notification.social'|translate}}
+        </ion-list-header>
+
+        <ion-item button (click)="openFollowRequest()">
+          <ion-icon color="black" name="person-add" slot="start"></ion-icon>
+          <ion-label>
+            {{'notification.susRequest'|translate}}({{followers.length}})
+          </ion-label>
+          <ion-icon name="arrow-redo" slot="end"></ion-icon>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-list-header style="font-size: 1.2em; font-weight: bolder">
+          {{'notification.writing'|translate}}
+        </ion-list-header>
+
+        <ion-item button (click)="openCollaborationRequest()">
+          <img
+            src="assets/icon/agreement.svg"
+            slot="start"
+            style="width: 24px"
+          />
+          <ion-label>
+            {{'notification.coRequest'|translate}}({{ members.length }})
+          </ion-label>
+          <ion-icon name="arrow-redo" slot="end"></ion-icon>
+        </ion-item>
+        <!--<ion-item button (click)="openChallengeSubmissions()">
+        <ion-icon slot="start" color="black" name="checkbox"></ion-icon>
+
+        <ion-label>Souscription aux exercices</ion-label>
+        <ion-icon name="arrow-redo" slot="end"></ion-icon>
+      </ion-item>-->
+      </ion-item-group>
+    </ion-list>
+  </ion-card>
+</ion-content>

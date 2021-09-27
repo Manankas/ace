@@ -1,0 +1,21 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <ion-item lines="none">
+      <ion-icon slot="start" style="color: black" name="hammer-outline"></ion-icon>
+      {{'customField.customized'|translate}}
+    </ion-item>
+  </mat-expansion-panel-header>
+  <mat-form-field *ngFor="let field of customFields" style="width: 100%">
+    <mat-label>{{field.name}}</mat-label>
+    <input
+      [(ngModel)]="field.value"
+      matInput
+      type="text"
+      [placeholder]="'customField.value'|translate"
+      maxlength="300"
+    />
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="openCustomizeFieldModal()">
+    {{'customField.edit'|translate}}
+  </button>
+</mat-expansion-panel>

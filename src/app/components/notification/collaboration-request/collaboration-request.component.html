@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon color="secondary" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title align="center">{{
+      "notification.coRequest" | translate
+    }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="members.length; else noRequest" lines="none">
+    <ion-item-sliding *ngFor="let member of members">
+      <ion-item button style="height: 60px" class="flex items-center">
+        <ion-avatar
+          slot="start"
+          style="--border-radius: 10px; width: 70px; height: 50px"
+        >
+          <img
+            style="width: 100%; height: 100%; object-fit: cover"
+            [src]="member.avatar || 'assets/images/defaultCar.jpg'"
+          />
+        </ion-avatar>
+        <ion-label style="margin: 0">
+          <h3 style="margin: 0" class="text-ellipsis">{{ member.name }}</h3>
+          <p class="text-ellipsis">{{ member.title }}</p>
+        </ion-label>
+
+        <span slot="end" style="height: 50px">{{ member.date }}</span>
+      </ion-item>
+
+      <ion-item-options side="end" style="height: 60px">
+        <div
+          class="row items-center"
+          style="
+            height: 100%;
+            justify-content: space-between;
+            background: var(--ion-color-light);
+          "
+        >
+          <ion-chip (click)="updateRequest(member.id)" color="success">
+            <ion-icon name="checkmark-outline" style="margin: 0"></ion-icon>
+          </ion-chip>
+          <ion-chip (click)="updateRequest(member.id, false)" color="danger">
+            <ion-icon name="trash-outline" style="margin: 0"></ion-icon>
+          </ion-chip>
+        </div>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ng-template #noRequest>
+    <ion-row class="justify-center items-center" style="height: 100%">
+      <h4>{{ "notification.noRequest" | translate }}</h4>
+    </ion-row>
+  </ng-template>
+</ion-content>

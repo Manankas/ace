@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon color="secondary" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 600; font-size: 16px">{{
+      "session.list.title" | translate
+    }}</ion-title>
+    <ion-button
+      class="ion-text-lowercase"
+      color="dark"
+      slot="end"
+      fill="clear"
+      (click)="addChapter()"
+    >
+      <ion-icon color="secondary" name="add"></ion-icon>
+      {{ "chapter.singular" | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    *ngIf="!isSessionEmpty(chapters); else notEmpty"
+    style="height: 100%"
+    class="flex ion-align-items-center ion-justify-content-center"
+  >
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col size="12">
+        <img src="assets/add_tasks.svg" />
+      </ion-col>
+      <ion-col size="12">
+        <ion-text color="medium" class="ion-text-wrap ion-text-center">
+          <h1>{{ "session.list.work" | translate }}</h1>
+          <p>
+            {{ "session.list.advise1" | translate }}
+          </p>
+        </ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-button
+          style="text-transform: none; height: 32px"
+          shape="round"
+          (click)="addChapter()"
+        >
+          <ion-icon name="add-circle-outline"></ion-icon>
+          {{ "chapter.singular" | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ng-template #notEmpty>
+    <div
+      style="font-size: 15px; box-shadow: 0.5px 0.5px 5px #f7f7f7"
+      class="ion-margin-top ion-margin-horizontal"
+    >
+      {{ "session.list.advise2" | translate }}
+    </div>
+    <ng-container
+      class="flex-center column"
+      *ngFor="let chapter of chapters; let cIndex = index"
+    >
+      <mat-accordion
+        *ngIf="!chapter.archived"
+        displayMode="flat"
+        panelState="expanded"
+        style="margin: 5px 0px"
+      >
+        <mat-expansion-panel
+          style="margin: 5px 0px"
+          [expanded]="cIndex === chapters.length - 1"
+          class="bg-ace"
+        >
+          <mat-expansion-panel-header
+            style="background: var(--ion-color-tertiary)"
+          >
+            <ion-item lines="none" color="transparent">
+              <ion-icon
+                slot="start"
+                style="color: black"
+                name="information-circle-outline"
+              ></ion-icon>
+              <ion-label color="light" style="color: black">
+                <h3 style="margin: 0; font-weight: 550">{{ chapter.title }}</h3>
+                <p style="margin: 0; font-size: 12px">
+                  {{ "chapter.number" | translate }}: {{ chapter.num }} |
+                  {{ chapter.wordCount }} mot(s)
+                </p>
+              </ion-label>
+            </ion-item>
+          </mat-expansion-panel-header>
+          <!-- collapse content -->
+          <ng-container
+            *ngFor="let session of chapter.sessions; let sIndex = index"
+          >
+            <ion-card>
+              <app-swipe-item
+                *ngIf="!session.archived"
+                [label]="
+                  toDate(session.updatedAt) +
+                  ' -> ' +
+                  session.wordCount +
+                  ' mot(s)'
+                "
+                (clickFinish)="openFinishSessionPopover(cIndex, sIndex)"
+                (clickDelete)="removeSession(cIndex, sIndex)"
+                (clickEdit)="editableSession(cIndex, sIndex)"
+                [color]="session.closed ? 'medium' : 'warning'"
+                [disabled]="session.closed ? true : false"
+              ></app-swipe-item>
+            </ion-card>
+          </ng-container>
+          <button
+            style="margin: 20px"
+            slot="end"
+            mat-raised-button
+            (click)="addSession(cIndex)"
+          >
+            <mat-icon>add</mat-icon>
+            {{ "session.new" | translate }}
+          </button>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-container>
+  </ng-template>
+</ion-content>

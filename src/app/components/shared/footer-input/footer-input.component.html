@@ -1,0 +1,21 @@
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10">
+        <ion-item class="input">
+          <ion-textarea
+            [placeholder]="placeholder||('chat.write'|translate)"
+            [(ngModel)]="modelValue"
+            (ngModelChange)="modelValueChange.emit(modelValue)"
+            [ngModelOptions]="{ standalone: true }"
+          ></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2" class="send-col">
+        <ion-button class="ion-margin-top" style="border-radius: 55px" (click)="send.emit(modelValue)">
+          <ion-icon icon="icon-only" name="send"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

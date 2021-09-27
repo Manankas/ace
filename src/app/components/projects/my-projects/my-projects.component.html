@@ -1,0 +1,19 @@
+<div class="cards-global-container">
+  <div
+    class="cards-container"
+    [style]="
+      platform.width() > 450
+        ? 'grid-template-columns: calc(100%/4) calc(100%/4) calc(100%/4) calc(100%/4)'
+        : 'grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3) '
+    "
+  >
+    <ng-container *ngFor="let project of projects; let i = index">
+      <app-project-card
+        *ngIf="!project.archived"
+        (click)="openProjectDetails(i)"
+        [projectName]="project.name"
+        [coverSrc]="project.avatar"
+      ></app-project-card>
+    </ng-container>
+  </div>
+</div>

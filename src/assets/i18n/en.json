@@ -1,0 +1,767 @@
+{
+  "home": "Home",
+  "chats": "Chats",
+  "writing": "Writing",
+  "notifications": "Notifications",
+  "account": "Account",
+  "loading": "Loading ...",
+  "about": "About",
+  "confirmation": "Confirmation",
+  "information": "Information",
+  "image": "Image",
+  "genAvatar": "Generate an avatar",
+  "message": "Message",
+  "report": "Report",
+  "user": {
+    "email": "Email",
+    "name": "Name",
+    "lastName": "Last Name",
+    "firstName": "First Name",
+    "pseudo": "Pseudonym",
+    "bio": "Biography"
+  },
+  "login": {
+    "createAccount": "Create an account",
+    "authentication": "Authentication",
+    "welcome": "Welcome",
+    "welcomeBody": "Are you ready to get started? I hope you are, because there is a long way to go. We will do our best to guide you to your destination.",
+    "invalidEMail": "Email not valid",
+    "signIn": "Log in",
+    "verifyEmail": "Verify your email",
+    "wrongPassword": "Wrong password",
+    "userNotFound": "User not found",
+    "forgotPassword": "Forgot password",
+    "connexion": "Connexion ...",
+    "success": "Successfully connected",
+    "logout": "Are you sure you want to log out ?"
+  },
+  "changePassword": {
+    "title": "Change your password",
+    "current": "Current password",
+    "new": "New password",
+    "confirm": "Confirm password",
+    "validate": "Submit",
+    "equals": "New and current password are the same.",
+    "success": "Password was successfully updated.",
+    "incorrect": "Current password is wrong."
+  },
+  "chat": {
+    "singular": "Chat",
+    "private": "Private messages",
+    "moreData": "Loading more data ...",
+    "pseudoReceiver": "Receiver pseudo",
+    "searchResult": "Search results",
+    "write": "Write your message"
+  },
+  "editProfile": {
+    "title": "Update your profile",
+    "pdp": "Profile photo",
+    "upload": "Upload an image",
+    "pdc": "Cover photo",
+    "password": "Change your password",
+    "email": "Email Address",
+    "bio": "Your biography",
+    "private": "Private account",
+    "privateAccount": "That will hide you from search"
+  },
+  "notification": {
+    "title": "Notifications",
+    "slogan": "The past shows a glimpse of the future.",
+    "social": "Social Relation",
+    "susRequest": "Follow requests",
+    "coRequest": "Collaboration requests",
+    "writing": "Writing",
+    "noRequest": "No requests found"
+  },
+  "profile": {
+    "edit": "Edit",
+    "followers": "Followers",
+    "share": "Share",
+    "achievements": "Achievements",
+    "participation": "Participation to an exercise",
+    "project": "Have project",
+    "collaboration": "Collaboration"
+  },
+  "register": {
+    "title": "Form to fulfil",
+    "general": "General Informations",
+    "contacts": "Contacts",
+    "security": "Security",
+    "matching": "Passwords not matched.",
+    "finish": "Finish",
+    "back": "Go back",
+    "usedEmail": "Email already in use",
+    "expired": "The provided Firebase ID token is expired.",
+    "revoked": "The Firebase ID token has been revoked.",
+    "externalError": "The Authentication server encountered an unexpected error while trying to process the request. Retry!",
+    "invalidEmail": "The provided value for the email user property is invalid."
+  },
+  "resetPassword": {
+    "title": "Reset password",
+    "enterEmail": "Enter your email, please.",
+    "verify": "A email was sent to {{email}} to reset your password."
+  },
+  "alarm": {
+    "title": "Alarm",
+    "next": "Next alarm",
+    "expand": "Expand",
+    "repeat": "Repeat",
+    "vibrate": "Vibrator",
+    "day": "day",
+    "hour": "hour",
+    "minute": "minute",
+    "second": "second",
+    "label": "Label",
+    "same": "An alarm with the same time is already defined.",
+    "defaultLabel": "Reminder"
+  },
+  "quit": {
+    "quit": "Quit without saving?",
+    "yes": "Quit",
+    "no": "Save"
+  },
+  "character": {
+    "plural": "Characters",
+    "general": {
+      "title": "General",
+      "name": "Name",
+      "description": "Description",
+      "age": "Age",
+      "gender": "Gender",
+      "dateOfBirth": "Date of birth",
+      "job": "Job",
+      "jobSatisfaction": "Job satisfaction",
+      "health": "Health",
+      "relationships": "Relationships",
+      "pets": "Pets",
+      "world": "World",
+      "areaOfResidence": "Area of residence",
+      "neighbourhood": "Neighbourhood",
+      "homeDescription": "Home description"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "height": "Height",
+      "weigh": "Weigh",
+      "ethnicity": "Ethnicity",
+      "skinTone": "Skin tone",
+      "eyeColor": "Eye color",
+      "hairStyle": "Hair style",
+      "distinguishFeature": "Distinguish feature",
+      "otherFacialFeatures": "Other facial features",
+      "bodyType": "Body type",
+      "clothingStyle": "Clothing style",
+      "accessories": "Accessories"
+    },
+    "personality": {
+      "title": "Personality",
+      "skills": "Skills",
+      "incompetence": "Incompetence",
+      "talent": "Talent",
+      "weakness": "Weakness",
+      "hobbies": "Hobbies",
+      "habits": "Habits",
+      "moral": "Moral",
+      "selfControl": "Self-control",
+      "motivation": "Motivation",
+      "discouragement": "Discouragement",
+      "confidenceLevel": "Confidence level",
+      "greatestFear": "Greatest fear"
+    },
+    "history": {
+      "title": "History",
+      "childhood": "Childhood",
+      "importantPastEvent": "Important Past Event",
+      "bestAccomplishment": "Best Accomplishment",
+      "otherAccomplishment": "other Accomplishment",
+      "failure": "Failure",
+      "secrets": "Secrets",
+      "bestMemories": "Best Memories",
+      "worstMemories": "Worst Memories"
+    },
+    "story": {
+      "title": "Story",
+      "storyRole": "Role in story",
+      "shortTermGoals": "Short Term Goals",
+      "longTermGoals": "Long Term Goals"
+    },
+    "addForm": {
+      "title": "Create character",
+      "pName": "Character name",
+      "explain": "All information including the picture can be edited and added after creation.",
+      "pDescription": "Character description",
+      "loading": "Character creation ...",
+      "success": "Character successfully created",
+      "failed": "Creation failed! Retry!"
+    },
+    "details": {
+      "title": "Character details"
+    },
+    "updateForm": {
+      "title": "Edit character"
+    },
+    "all": "All characters"
+  },
+  "species": {
+    "general": {
+      "title": "General",
+      "name": "Name",
+      "description": "Description",
+      "lifespan": "Lifespan",
+      "height": "Height",
+      "weight": "Weight",
+      "diet": "Diet",
+      "skillsAndAbilities": "Skills & abilities",
+      "weakness": "Weakness",
+      "viewAndMoral": "View and Moral"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "appearance": "Appearance",
+      "physical": "Physical",
+      "mental": "Mental"
+    },
+    "lifeStyle": {
+      "title": "Life style",
+      "commonLocations": "Common locations",
+      "habitats": "Habitats",
+      "reproduction": "Reproduction",
+      "growthStages": "Grow stages",
+      "majorStages": "Major stages",
+      "majorEthnicGroup": "Major ethnic group"
+    },
+    "background": {
+      "title": "Background",
+      "origin": "Origin",
+      "history": "History",
+      "religiousConnections": "Religious connections",
+      "commonCulturalInfluences": "Common cultural influences"
+    },
+    "update": {
+      "title": "Edit species"
+    },
+    "add": {
+      "title": "Create species",
+      "failure": "Creation failure!"
+    },
+    "singular": "Species"
+  },
+  "item": {
+    "general": {
+      "title": "General",
+      "name": "Name",
+      "description": "Description",
+      "purpose": "Purpose",
+      "specialAbilitiesAndProperties": "Special abilities & properties",
+      "collection": "Collection",
+      "production": "Production",
+      "composition": "Composition",
+      "value": "Value",
+      "rarity": "Rarity",
+      "occurrence": "Occurrence",
+      "detectionMethods": "Detection methods",
+      "armaments": "Armaments",
+      "defense": "Defense",
+      "otherEquipment": "Other equipment"
+    },
+    "history": {
+      "title": "History",
+      "history": "History",
+      "origin": "Origin",
+      "notableOwners": "Notable owners"
+    },
+    "update": {
+      "title": "Edit item"
+    },
+    "add": {
+      "title": "Create an item"
+    },
+    "list": "Items"
+  },
+  "wLocation": {
+    "general": {
+      "title": "General",
+      "name": "Name",
+      "description": "Description",
+      "dimension": "Dimension",
+      "objects": "Objects",
+      "condition": "Condition",
+      "feeling": "Feeling",
+      "noises": "Noises",
+      "smell": "Smell"
+    },
+    "biologyAndEnvironment": {
+      "title": "Biology and environment",
+      "climate": "Climate",
+      "landMarks": "Land marks",
+      "flora": "Flora",
+      "fauna": "Fauna",
+      "bodiesOfWater": "Bodies of water",
+      "pollution": "Pollution"
+    },
+    "culture": {
+      "title": "Culture",
+      "culture": "Culture",
+      "inhabitants": "Inhabitants",
+      "language": "Language",
+      "rituals": "Rituals",
+      "generalEthics": "General ethics",
+      "artAndMusic": "Art and Music",
+      "viewsOnLife": "Views on life",
+      "viewsOnDeath": "Views on death",
+      "genderRaceEquality": "Gender/race Equality"
+    },
+    "politics": {
+      "title": "Politics",
+      "governmentSystem": "Government system",
+      "politicalParties": "Political parties",
+      "importantPoliticalParties": "Important political parties",
+      "opinionOfPublic": "Opinion of public",
+      "laws": "Laws",
+      "punishments": "Punishments",
+      "lawEnforcement": "Law enforcement",
+      "fieldOpposingForcingMissing": "field opposing forcing missing"
+    },
+    "magicAndTechnology": {
+      "title": "Magic and technology",
+      "magic": "Magic",
+      "technologicalLevel": "Technological level",
+      "uniqueTechnologies": "Unique technology",
+      "medicineAndHealHealthCare": "Medicine and health care",
+      "ethicalControversies": "Ethical controversies"
+    },
+    "histories": {
+      "title": "History",
+      "dateFounded": "Date founded",
+      "founder": "Founder",
+      "majorEvent": "Major event"
+    },
+    "religion": {
+      "title": "Religion",
+      "deities": "Deities",
+      "groups": "Group",
+      "leadersAndProphets": "Leader and prophets",
+      "founding": "Founding",
+      "valuesCommandments": "Values commandments",
+      "view": "View",
+      "freedom": "Freedom"
+    },
+    "tradeAndPublicRelations": {
+      "title": "Trade and public relations",
+      "currency": "Currency",
+      "war": "War",
+      "tradePartners": "trade partners",
+      "majorImports": "Major imports",
+      "majorExports": "Major exports"
+    },
+    "update": {
+      "title": "Edit location"
+    },
+    "add": {
+      "title": "Create location",
+      "loading": "Creating location ...",
+      "failure": "Creation failed"
+    },
+    "all": "All locations",
+    "title": "Worldbuilding"
+  },
+  "entities": {
+    "characters": "Characters",
+    "wLocations": "Locations",
+    "notes": "Notes",
+    "groups": "Character groups",
+    "items": "Items",
+    "species": "Natures",
+    "timelines": "Timelines",
+    "projects": "Projects",
+    "chapters": "Chapters",
+    "tasks": "Tasks"
+  },
+  "trash": {
+    "title": "Deleted {{entity}}",
+    "buttons": {
+      "keep": "Keep",
+      "restore": "restore",
+      "softDelete": "Delete",
+      "deleteForever": "Permanently delete"
+    },
+    "restore": {
+      "header": "Attention!",
+      "message": "Restored items will be moved back to your original lists. Permanently deleted items can not be restored, ever."
+    },
+    "delete": {
+      "header": "Do you really want to delete this item ?",
+      "message": "If you delete it, you can always retrieve it from the trash",
+      "forever": "This item will be permanently deleted!"
+    },
+    "name": "Trash"
+  },
+  "archive": {
+    "title": "Archived projects",
+    "delete": {
+      "message": "Deleted projects are moved to the archive. You can access your archive from your account menu."
+    },
+    "buttons": {
+      "softDelete": "Move to archive"
+    }
+  },
+  "moveTo": {
+    "title": "Move to",
+    "errorMessage": "Could not move an item to itself!"
+  },
+  "delete": {
+    "loading": "Delete",
+    "success": "Deleted successfully"
+  },
+  "update": {
+    "loading": "Updating",
+    "success": "Updated successfully",
+    "fail": "Update fails"
+  },
+  "add": {
+    "success": "Successfully added",
+    "fail": "add failed"
+  },
+  "member": {
+    "singular": "Membre",
+    "roles": ["New", "Reader", "Editor", "Owner", "Banned"],
+    "account": "View account",
+    "send": "Send a message",
+    "editRole": "Edit co-author role",
+    "ban": ["Ban co-author", "Unban co-author"]
+  },
+  "challenge": {
+    "exercise": "Exercises",
+    "publish": {
+      "title": "Publishing",
+      "message": "Check this button if you want to publish, else uncheck it."
+    },
+    "add": {
+      "title": "Add an exercise",
+      "button": "Add"
+    },
+    "update": {
+      "title": "Update the exercise",
+      "button": "save changes"
+    },
+    "submission": {
+      "title": "Save submission",
+      "subtitle": "Subtitle",
+      "body": "Check this if you've not finished yet or if you want to keep this submission for yourself."
+    },
+    "participate": "Participate",
+    "participants": "Participants",
+    "participationOf": "Participation of {{name}} to {{title}}",
+    "editor": "Challenge editor",
+    "form": {
+      "title": "Title",
+      "tPlaceholder": "Exercise title",
+      "context": "Context",
+      "update": "Updating exercise",
+      "creation": "Creation of exercise"
+    },
+    "author": "Author",
+    "comments": "Comments",
+    "deleteComment": "Delete comment",
+    "editComment": "Modify comment",
+    "putComment": "Put a comment",
+    "previous": "Previous exercises",
+    "none": "No exercise found"
+  },
+  "collaboration": {
+    "memberRole": {
+      "title": "This user can :",
+      "read": {
+        "title": "Read",
+        "content": "Always to see all story elements. Always on."
+      },
+      "createEdit": {
+        "title": "Create & edit",
+        "content": "Always to create and modify story elements."
+      }
+    },
+    "request": {
+      "verification": "Code verification ...",
+      "send": "Sending request",
+      "invalid": "Code invalide !",
+      "wait": "Already requested! Wait for approbation of owner",
+      "success": "Request sent",
+      "isMember": "Already member"
+    },
+    "activation": {
+      "explaining": "Code is case sensitive. Long press to copy",
+      "subExplaining": "Activate collaboration to see code.",
+      "question": "How does it work ?",
+      "responses": [
+        "Enable collaboration",
+        "Share project code with co-author",
+        "Co-author enters code at home screen",
+        "Accept co-author request in the list 'Authors'."
+      ],
+      "confident": "You always remain the owner of this project. Changes done by other users can not be undone.",
+      "copied": "Code was copied"
+    },
+    "requestCode": {
+      "title": "Enter project code",
+      "slogan": "Two minds stand stronger than one.",
+      "pCode": "Project code",
+      "case": "Code is case sensitive.",
+      "send": "Submit"
+    },
+    "my": "My collaborations"
+  },
+  "buttons": { "cancel": "Cancel", "save": "Save", "confirm": ["Yes", "No"] },
+  "following": {
+    "follow": "Follow",
+    "waiting": "Wait for confirmation",
+    "unFollow": "Unfollow",
+    "invite": "Follow for more details",
+    "followers": "Followers",
+    "my": "My followers",
+    "request": "Requests to follow you",
+    "people": "Your followers",
+    "myFollowing": "My subscriptions"
+  },
+  "task": {
+    "status": ["To do", "In progress", "Finished"],
+    "organization": "Organization of tasks",
+    "label": "Task label",
+    "advise": "Drag tasks to modify status"
+  },
+  "you": "You",
+  "close": "Close",
+  "private": "Private",
+  "root": "Root",
+  "quickNavigation": "Quick navigation",
+  "pWysiwyg": "Start writing here ...",
+  "timelines": {
+    "singular": "Timeline",
+    "andEvent": "Timeline & event",
+    "story": "Story",
+    "name": "Name",
+    "description": "Description",
+    "create": "Create un timeline",
+    "update": "Update the timeline",
+    "moment": {
+      "label": "New moment",
+      "create": "Add a period to timeline",
+      "update": "Modify the period"
+    },
+    "event": {
+      "create": "New event",
+      "update": "Update the event"
+    },
+    "past": "Paste",
+    "cut": "Couper"
+  },
+  "local": {
+    "shortDays": ["S", "M", "T", "W", "T", "F", "S"]
+  },
+  "chapter": {
+    "singular": "Chapter",
+    "number": "N° chapter",
+    "pNumber": "Chapter number",
+    "title": "Chapter title",
+    "noTitle": "The chapter title is <strong> required </strong>",
+    "summary": "Chapter summary",
+    "all": "All chapters",
+    "numberOf": "Number of",
+    "addTitle": "Add chapter",
+    "updateTitle": "Edit chapter"
+  },
+  "project": {
+    "plural": "Projects",
+    "singular": "Project",
+    "sizeTypes": ["words", "characters"],
+    "genders": [
+      "Generale",
+      "Fantasy",
+      "Thriller",
+      "Horror",
+      "Medicinal",
+      "Science Fiction",
+      "Roman",
+      "Historical",
+      "Fiction",
+      "non-fiction",
+      "Detective",
+      "Tragedy",
+      "Hard to tell",
+      "Too early to identify"
+    ],
+    "summary": "Summary",
+    "startAt": "Start date",
+    "endAt": "End date",
+    "size": "Estimated size",
+    "unit": "Unit",
+    "time": "Time unit",
+    "gender": "Gender",
+    "add": {
+      "title": "New project",
+      "goodLuck": "Good luck!",
+      "pName": "Book name",
+      "pDescription": "Book description",
+      "next": "Next",
+      "back": "Back",
+      "estimation": "Estimations",
+      "cover": "Cover",
+      "choose": "Choose",
+      "reset": "Reset",
+      "finished": "Finished",
+      "haveFinished": "You have finished.",
+      "create": "Create the project"
+    },
+    "my": "My projects",
+    "archived": "Archived projects"
+  },
+  "group": {
+    "general": {
+      "title": "General",
+      "name": "Name",
+      "description": "Description",
+      "alternateNames": "Alternate names",
+      "biggestAchievement": "Bigest achievement",
+      "otherAchievements": "Other achievements",
+      "biggestFailure": "Bigest failure",
+      "otherFailures": "Other failure",
+      "territory": "Territory",
+      "headquarter": "Headquarter",
+      "transport": "Transport",
+      "technologyAndScience": "Technology and science",
+      "uniquePossessions": "Unique possessions"
+    },
+    "culture": {
+      "title": "Culture",
+      "culture": "Culture",
+      "flag": "Flag",
+      "slogan": "Slogan",
+      "philosophy": "Philosophy",
+      "longTermGoals": "Long Term Goals",
+      "shortTermGoals": "Short Term Goals",
+      "traditions": "Traditions",
+      "rules": "Rules",
+      "associatedTrademarkItem": "Associated trademark item",
+      "punishments": "Punishments",
+      "treasures": "Treasures"
+    },
+    "history": {
+      "title": "History",
+      "origin": "Origin",
+      "founder": "Founder",
+      "foundingDate": "Founding date",
+      "foundingHistory": "Founding history",
+      "majorHistoricalEvents": "Major historical events",
+      "dissolutionDate": "Dissolution date",
+      "dissolutionHistory": "Dissolution history"
+    },
+    "ranks": {
+      "title": "Ranks",
+      "socialHierarchy": "Social hierarchy",
+      "highest": "Highest rank",
+      "secondHighest": "2nd highest rank",
+      "thirdHighest": "3th highest rank",
+      "firstMedium": "1st medium rank",
+      "secondMedium": "2nd medium rank",
+      "thirdMedium": "3rd medium rank",
+      "thirdLower": "3th lowest rank",
+      "secondLower": "2nd lowest rank",
+      "lowest": "Lowest rank"
+    },
+    "notes": {
+      "title": "Notes",
+      "icon": "clipboard-outline",
+      "connectNote": "Connect note"
+    },
+    "add": {
+      "title": "Create a group",
+      "loading": "Group creation ...",
+      "success": "The new group has been created",
+      "failure": "Group creation failed"
+    },
+    "sub": "subgroups",
+    "singular": "Group",
+    "update": {
+      "select": "Character selection",
+      "title": "Edit group",
+      "image": "Tap on the image to replace it",
+      "addCharacter": "Add character"
+    }
+  },
+  "customField": {
+    "title": "Additional tools",
+    "customize": "Customizing fields",
+    "name": "Field name",
+    "pName": "Type here",
+    "value": "Field value",
+    "customized": "Customized fields",
+    "edit": "Edit fields"
+  },
+  "imageModal": {
+    "select": "Select an image",
+    "other": "Choose an other image",
+    "upload": "Upload",
+    "loading": "Uploading ...",
+    "gallery": "Gallery",
+    "nb": "It is not necessary to re-upload images. Please re-use already uploaded images from gallery tab."
+  },
+  "note": {
+    "edit": "Edit note",
+    "name": "Note name",
+    "label": "Label",
+    "updateLoading": "Operation execution ...",
+    "all": "All notes"
+  },
+  "projectSettings": {
+    "title": "Project sttings",
+    "data": "Project data",
+    "cover": "Edit the cover image",
+    "edit": "Edit",
+    "additional": "Additional",
+    "archive": "Archive the project",
+    "notification": "Notification",
+    "remember": "Remind me daily of the number of remaining words to write.",
+    "finished": "It looks like the project is done. You have none {{val}} to write.",
+    "update": {
+      "title": "Edit project",
+      "save": "Save your changes"
+    },
+    "notify": {
+      "body": "It remains {{remainWord}}",
+      "inboxList": "Good morning! Currently,-you still have {{remainWord}}-{{sizeType}} to write."
+    }
+  },
+  "session": {
+    "singular": "Session",
+    "finishQuestion": "Do you want to end the session?",
+    "wordCount": "Number of words written",
+    "warning": "A closed session can no longer be modified.",
+    "pWordCount": "Enter the number of words",
+    "required": "This field is <strong> required </strong>",
+    "list": {
+      "title": "Sessions",
+      "work": "At work !",
+      "advise1": "Before opening a session, you must create at least one chapter that you will work on",
+      "advise2": "Drag a session to enter the number of words written."
+    },
+    "new": "New session"
+  },
+  "statistic": {
+    "title": "Uses & Statistics",
+    "description": "Project description",
+    "creation": "Creation date",
+    "size": "Size",
+    "end": "Estimated end",
+    "duration": "Estimated duration",
+    "criticMean": "Critical mean",
+    "number": "Chapter number",
+    "length": "Average length",
+    "today": "Today",
+    "workDuration": "Working time",
+    "written": "Written {{sizeType}}",
+    "bestDay": "Best day",
+    "dailyMean": "Daily average",
+    "progress": "Project progress"
+  },
+  "french": "French",
+  "english": "English"
+}

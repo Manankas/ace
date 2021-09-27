@@ -1,0 +1,775 @@
+{
+  "home": "Accueil",
+  "chats": "Discussions",
+  "writing": "Oeuvres",
+  "notifications": "Notifications",
+  "account": "Account",
+  "loading": "Chargement ...",
+  "about": "A propos",
+  "confirmation": "Confirmation",
+  "information": "Information",
+  "image": "Image",
+  "genAvatar": "Générer un avatar",
+  "message": "Message",
+  "report": "Signaler",
+  "user": {
+    "email": "Email",
+    "name": "Nom",
+    "lastName": "Nom de famille",
+    "firstName": "Prénom(s)",
+    "pseudo": "Pseudonyme",
+    "bio": "Biographie",
+    "password": "Mot de passe",
+    "phone": "N° téléphone"
+  },
+  "login": {
+    "createAccount": "Créer un compte",
+    "authentication": "Authentification",
+    "welcome": "Bienvenue",
+    "welcomeBody": "Êtes-vous prêt à vous lancer ? J'espère que vous l'êtes, car il y a un long chemin à parcourir. Nous ferons tout notre possible pour vous guider jusqu'à votre destination.",
+    "invalidEMail": "Email invalide",
+    "signIn": "Se connecter",
+    "verifyEmail": "Vérifier votre email",
+    "wrongPassword": "Mot de passe invalide",
+    "userNotFound": "Utilisateur introuvable",
+    "forgotPassword": "Mot de passe oublié",
+    "connexion": "Connexion ...",
+    "success": "Connexion réussie",
+    "logout": "Voulez-vous vraiment vous déconnecter ?"
+  },
+  "changePassword": {
+    "title": "Modifier votre mot de passe",
+    "current": "Mot de passe actuel",
+    "new": "Nouveau mot de passe",
+    "confirm": "Confirmer le mot de passe",
+    "validate": "Valider",
+    "equals": "L'ancien et le nouveau mot de passe sont identiques.",
+    "success": "Votre mot de passe a été modifié.",
+    "incorrect": "Mot de passe actuel incorrect."
+  },
+  "chat": {
+    "singular": "Chat",
+    "private": "Messages privés",
+    "moreData": "Chargement de plus de données ...",
+    "pseudoReceiver": "Pseudo du destinataire",
+    "searchResult": "Résultats de recherche",
+    "group": "Messages du groupe",
+    "write": "Entrer votre message"
+  },
+  "editProfile": {
+    "title": "Modifier votre profile",
+    "pdp": "Photo de profil",
+    "upload": "Télécharger une image",
+    "pdc": "Photo de couverture",
+    "password": "Modifier le mot de passe",
+    "email": "Adresse email",
+    "bio": "Votre biographie",
+    "private": "Compte privé",
+    "privateAccount": "Cela masquera votre compte de la recherche."
+  },
+  "notification": {
+    "title": "Notifications",
+    "slogan": "Le passé laisse entrevoir un avenir.",
+    "social": "Relation Sociale",
+    "susRequest": "Demandes d'abonnement",
+    "coRequest": "Demandes de collaboration",
+    "writing": "Rédaction",
+    "noRequest": "Aucune demande trouvée"
+  },
+  "profile": {
+    "edit": "Modifier",
+    "followers": "Abonnés",
+    "share": "Partager",
+    "achievements": "Réalisations",
+    "participation": "Participation à un exercice",
+    "project": "Avoir de projet",
+    "collaboration": "Collaboration"
+  },
+  "register": {
+    "title": "Formulaire à remplir",
+    "general": "Informations générales",
+    "contacts": "Contacts",
+    "security": "Sécurité",
+    "matching": "Les mots de passe ne correspondent pas.",
+    "finish": "Terminer",
+    "back": "Rétourner à la page de connexion",
+    "usedEmail": "Email déjà utilisé",
+    "expired": "Le jeton d'identification Firebase fourni a expiré.",
+    "revoked": "Le jeton d'identification Firebase a été révoqué.",
+    "externalError": "Le serveur d'authentification a rencontré une erreur inattendue lors de la tentative de traitement de la demande. Réessayez!",
+    "invalidEmail": "La valeur fournie pour la propriété d'utilisateur de messagerie n'est pas valide."
+  },
+  "resetPassword": {
+    "title": "Réinitialisation",
+    "enterEmail": "Veuiller saisir votre email",
+    "verify": "Un lien a été envoyé à {{email}} pour réinitialiser votre mot de passe."
+  },
+  "alarm": {
+    "title": "Alarme",
+    "next": "Prochaine alarme",
+    "expand": "Développer",
+    "repeat": "Répéter",
+    "vibrate": "Vibreur",
+    "day": "jour",
+    "hour": "heure",
+    "minute": "minute",
+    "second": "seconde",
+    "label": "Libellé",
+    "same": "Une alarme à la même heure est déjà définie.",
+    "defaultLabel": "Rappel"
+  },
+  "quit": {
+    "quit": "Quitter sans enregistrer?",
+    "yes": "Quitter",
+    "no": "Enregistrer"
+  },
+  "character": {
+    "plural": "Personnages",
+    "general": {
+      "title": "Général",
+      "name": "Name",
+      "description": "Description",
+      "age": "Age",
+      "gender": "Sexe",
+      "dateOfBirth": "Date de naissance",
+      "job": "Profession",
+      "jobSatisfaction": "Epanouissement professionnel",
+      "health": "Santé",
+      "relationships": "Relations",
+      "pets": "Animaux de compagnies",
+      "world": "Monde",
+      "areaOfResidence": " Lieu de résidence",
+      "neighbourhood": "Voisinage",
+      "homeDescription": "Home description"
+    },
+    "appearance": {
+      "title": "Apparance",
+      "height": "Taille",
+      "weigh": "Poids",
+      "ethnicity": "Ethnie",
+      "skinTone": " Couleur de peau",
+      "eyeColor": "couleur des yeaux",
+      "hairStyle": " Coupe de cheveux",
+      "distinguishFeature": "Traits distinctifs",
+      "otherFacialFeatures": "Caractéristiques",
+      "bodyType": "Apparence",
+      "clothingStyle": "Style véstimentaire",
+      "accessories": "Accessories"
+    },
+    "personality": {
+      "title": "Caractère",
+      "skills": "Compétences",
+      "incompetence": "incompétences",
+      "talent": "Talent",
+      "weakness": "Faiblesse",
+      "hobbies": "Passion",
+      "habits": "Habitudes",
+      "moral": "Moral",
+      "selfControl": "Maitrise de soi",
+      "motivation": "Motivation",
+      "discouragement": "Decouragement",
+      "confidenceLevel": "Confiance en soi",
+      "greatestFear": "Plus grande peur"
+    },
+    "history": {
+      "title": "Histoire",
+      "childhood": "Enfance",
+      "importantPastEvent": "Evènements passés importants",
+      "bestAccomplishment": "Plus grand éxploit",
+      "otherAccomplishment": "Autres éxploits",
+      "failure": "Echecs",
+      "secrets": "Secrets",
+      "bestMemories": "Meilleur souvenir",
+      "worstMemories": "Pire souvenir"
+    },
+    "story": {
+      "title": "Rôle",
+      "storyRole": "Rôle dans l'histoire",
+      "shortTermGoals": "Objectif à court terme",
+      "longTermGoals": "Objectif à long terme"
+    },
+    "addForm": {
+      "title": "Créer un personnage",
+      "pName": "Nommer le personnage",
+      "explain": "Toutes les informations, y compris l'image, peuvent être editer et rajouter après la creation.",
+      "pDescription": "Déscription du personnage",
+      "loading": "Création du personnage ...",
+      "success": "Le nouveau personnage a été crée!",
+      "failed": "Echec de création! Réessayer!"
+    },
+    "details": {
+      "title": "Details du personnage"
+    },
+    "updateForm": {
+      "title": "Modifier le personnage"
+    },
+    "all": "Tous les personnages"
+  },
+  "species": {
+    "general": {
+      "title": "Général",
+      "name": "Nom",
+      "description": "Description",
+      "lifespan": "Durée de vie",
+      "height": "Taille",
+      "weight": "Poids",
+      "diet": "Régime alimentaire",
+      "skillsAndAbilities": "Compétences et capacités",
+      "weakness": "Faiblesse",
+      "viewAndMoral": "Vue et morale"
+    },
+    "appearance": {
+      "title": "Apparence",
+      "appearance": "Apparence",
+      "physical": "Physique",
+      "mental": "Psychologique"
+    },
+    "lifeStyle": {
+      "title": "Style de vie",
+      "commonLocations": "Emplacements communs",
+      "habitats": "Habitats",
+      "reproduction": "Reproduction",
+      "growthStages": "Étapes de croissance",
+      "majorStages": "Grandes étapes",
+      "majorEthnicGroup": "Groupe ethnique majoritaire"
+    },
+    "background": {
+      "title": "Arrière-plan",
+      "origin": "Origine",
+      "history": "Histoire",
+      "religiousConnections": "Liens religieux",
+      "commonCulturalInfluences": "Influences culturelles communes"
+    },
+    "update": {
+      "title": "Modifier la nature"
+    },
+    "add": {
+      "title": "Créer une nature",
+      "failure": "Echec de création !"
+    },
+    "singular": "Nature"
+  },
+  "item": {
+    "general": {
+      "title": "Général",
+      "name": "Nom",
+      "description": "Description",
+      "purpose": "Objectif",
+      "specialAbilitiesAndProperties": "Capacités et propriétés spéciales",
+      "collection": "Collection",
+      "production": "Production",
+      "composition": "Composition",
+      "value": "Valeur",
+      "rarity": "Rarété",
+      "occurrence": "Occurrence",
+      "detectionMethods": "Méthodes de détection",
+      "armaments": "Armements",
+      "defense": "Défense",
+      "otherEquipment": "Autres équipments"
+    },
+    "history": {
+      "title": "Histoire",
+      "history": "Histoire",
+      "origin": "Origine",
+      "notableOwners": "Propriétaires notables"
+    },
+    "update": {
+      "title": "Modifier l'item"
+    },
+    "add": {
+      "title": "Créer un item"
+    },
+    "list": "Les items"
+  },
+  "wLocation": {
+    "general": {
+      "title": "Général",
+      "name": "Nom",
+      "description": "Description",
+      "dimension": "Dimension",
+      "objects": "Objets",
+      "condition": "Condition",
+      "feeling": "Sentiment",
+      "noises": "Bruits",
+      "smell": "Odeur"
+    },
+    "biologyAndEnvironment": {
+      "title": "Biologie et environnement",
+      "climate": "Climat",
+      "landMarks": "Topographie",
+      "flora": "Flore",
+      "fauna": "Faune",
+      "bodiesOfWater": "Réseau hydraulique",
+      "pollution": "Pollution"
+    },
+    "culture": {
+      "title": "Culture",
+      "culture": "Culture",
+      "inhabitants": "Habitants",
+      "language": "Langue",
+      "rituals": "Rituels",
+      "generalEthics": "Éthique générale",
+      "artAndMusic": "Art et musique",
+      "viewsOnLife": "Philosophie",
+      "viewsOnDeath": "Opinions sur la mort",
+      "genderRaceEquality": "Egalité de genre/race"
+    },
+    "politics": {
+      "title": "Politique",
+      "governmentSystem": "Système de gouvernement",
+      "politicalParties": "Partis politiques",
+      "importantPoliticalParties": "Les grands partis politiques",
+      "opinionOfPublic": "Opinion public",
+      "laws": "Législation",
+      "punishments": "Les sanctions",
+      "lawEnforcement": "Forces de l'ordre",
+      "fieldOpposingForcingMissing": "Terrain adverse forçage manquant"
+    },
+    "magicAndTechnology": {
+      "title": "Magie et technologie",
+      "magic": "Magie",
+      "technologicalLevel": "Niveau technologique",
+      "uniqueTechnologies": "Technologie unique",
+      "medicineAndHealHealthCare": "Médecine et soins de santé",
+      "ethicalControversies": "Controverses éthiques"
+    },
+    "histories": {
+      "title": "Histoire",
+      "dateFounded": "Chronologie",
+      "founder": "Fondateur",
+      "majorEvent": "Événement majeur"
+    },
+    "religion": {
+      "title": "Réligion",
+      "deities": "Divinités",
+      "groups": "Groupe",
+      "leadersAndProphets": "Chef et prophètes",
+      "founding": "Fondateur",
+      "valuesCommandments": "Mythe fondateur",
+      "view": "Opinion",
+      "freedom": "Liberté"
+    },
+    "tradeAndPublicRelations": {
+      "title": "Commerce et relations publiques",
+      "currency": "Devise",
+      "war": "Guerre",
+      "tradePartners": "partenaires commerciaux",
+      "majorImports": "Importations majeures",
+      "majorExports": "Exportations majeures"
+    },
+    "update": {
+      "title": "Modifier la location"
+    },
+    "add": {
+      "title": "Créer une location",
+      "loading": "Création de location ...",
+      "failure": "Echec de création"
+    },
+    "all": "Toutes locations",
+    "title": "Construction du monde"
+  },
+  "entities": {
+    "characters": "Personnages",
+    "wLocations": "Locations",
+    "notes": "Notes",
+    "groups": "Groupe de personnages",
+    "items": "Items",
+    "species": "Natures",
+    "timelines": "Chronologies",
+    "projects": "Projets",
+    "chapters": "Chapitres",
+    "tasks": "Tâches"
+  },
+  "trash": {
+    "title": "{{entity}} supprimé(e)s",
+    "buttons": {
+      "keep": "Garder",
+      "restore": "Restaurer",
+      "softDelete": "Supprimer",
+      "deleteForever": "Supprimer définitivement"
+    },
+    "restore": {
+      "header": "Attention!",
+      "message": "Les éléments restaurés seront ramenés à vos listes d'origine. Les éléments supprimés définitivement ne peuvent jamais être restaurés."
+    },
+    "delete": {
+      "header": "Etes-vous sûr de vouloir supprimer cet élément ?",
+      "message": "En supprimant, vous pourriez toujours le récupérer à partir de corbeille",
+      "forever": "Cet élément sera définitivement supprimé!"
+    },
+    "name": "Corbeille"
+  },
+  "archive": {
+    "title": "Projets archivés",
+    "delete": {
+      "message": "Les projets supprimés sont déplacés dans l'archive. Vous pouvez accéder à votre archive via menu de votre compte."
+    },
+    "buttons": {
+      "softDelete": "Déplacer dans l'archive"
+    }
+  },
+  "moveTo": {
+    "title": "Déplacer à",
+    "errorMessage": "On ne peut pas déplacer un élément vers lui-même!"
+  },
+  "delete": {
+    "loading": "Suppression",
+    "success": "Suppression avec succès"
+  },
+  "update": {
+    "loading": "Mise à jour",
+    "success": "Mise à jour avec succès",
+    "fail": "Mise à jour échouée"
+  },
+  "add": {
+    "success": "Ajout avec succès",
+    "fail": "Ajout échoué"
+  },
+  "member": {
+    "singular": "Membre",
+    "roles": ["Nouveau", "Lecteur", "Editeur", "Propriétaire", "Banni(e)"],
+    "account": "Voir le compte",
+    "send": "Envoyer un message",
+    "editRole": "Editer le role du co-auteur",
+    "ban": ["Bannir le co-auteur", "Ne pas bannir le co-auteur"],
+    "banned": "Banni(e)"
+  },
+  "challenge": {
+    "exercise": "Exercices",
+    "publish": {
+      "title": "Publication",
+      "message": "Cocher cette cage si vous voulez publier l'exercice. Sinon, décochez-la."
+    },
+    "add": {
+      "title": "Ajouter un exercice",
+      "button": "Ajouter"
+    },
+    "update": {
+      "title": "Mettre à jour exercice",
+      "button": "Enregistrer les modifications"
+    },
+    "submission": {
+      "title": "Enregistrer la soumission",
+      "subtitle": "Sous-titre",
+      "body": "Cochez cette case si vous n'avez pas encore terminé ou si vous souhaitez garder cette soumission pour vous-même."
+    },
+    "participate": "Participer",
+    "participants": "Participants",
+    "participationOf": "Participation de {{name}} à {{title}}",
+    "editor": "Editeur d'exercice",
+    "form": {
+      "title": "Titre",
+      "tPlaceholder": "Titre de l'éxércice",
+      "context": "Contexte",
+      "update": "Mise à jour de l'execice",
+      "creation": "Création de l'execice"
+    },
+    "author": "Auteur",
+    "comments": "Commentaires",
+    "deleteComment": "Supprimer le commentaire",
+    "editComment": "Modifier le commentaire",
+    "putComment": "Laisser un commentaire",
+    "previous": "Les exercices précédents",
+    "none": "Aucun exercice trouvé"
+  },
+  "collaboration": {
+    "memberRole": {
+      "title": "Cet utilisateur peut :",
+      "read": {
+        "title": "Lire",
+        "content": "Toujours pour voir tous les éléments de l'histoire. Toujours activé"
+      },
+      "createEdit": {
+        "title": "Créer & modifier",
+        "content": "Toujours pour créer et modifier des éléments de l'histoire."
+      }
+    },
+    "request": {
+      "send": "Envoi de la demande",
+      "verification": "Verification du code ...",
+      "invalid": "Code invalide !",
+      "wait": "Déjà demandée! Veuiller attendre l'approbation du propriétaire",
+      "success": "Demande envoyée",
+      "isMember": "Vous êtes déjà un membre pour ce projet!"
+    },
+    "activation": {
+      "explaining": "Le code est sensible à la casse. Appuyez longuement pour copier.",
+      "subExplaining": "Activer la collaboration pour voir le code.",
+      "question": "Comment cela fonctionne ?",
+      "responses": [
+        "Activer la collaboration",
+        "Partager le code du projet avec un co-auteur",
+        "Le Co-auteur entre le code dans la page d'accueil",
+        "Accepter la demande de co-auteur dans la liste d'Auteurs"
+      ],
+      "confident": "vous restez toujours le propriétaire de ce projet. Les modifications apportées  par d'autres utilisateurs ne peuvent pas être annulées.",
+      "copied": "Le code a été copié"
+    },
+    "requestCode": {
+      "title": "Entrer le code du projet",
+      "slogan": "Deux esprits sont plus forts qu'un.",
+      "pCode": "Code du projet",
+      "case": "Le code est sensible à la casse.",
+      "send": "Envoyer ma demande"
+    },
+    "my": "Mes collaborations"
+  },
+  "buttons": {
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "confirm": ["Oui", "Non"]
+  },
+  "following": {
+    "follow": "Abonner",
+    "waiting": "Attendre la confirmation",
+    "unFollow": "Désabonner",
+    "invite": "Suivre pour plus de détails",
+    "followers": "Suiveurs",
+    "my": "Mes suiveurs",
+    "request": "Démandes de vous suivre",
+    "people": "Les personnes suiveuses",
+    "myFollowing": "Mes abonnements"
+  },
+  "task": {
+    "status": ["A faire", "En cours", "Terminée"],
+    "organization": "Organisation des tâches",
+    "label": "Libellé de tâche",
+    "advise": "Faire glisser les tâches pour modifier les status"
+  },
+  "you": "Vous",
+  "close": "Fermer",
+  "private": "Privé",
+  "root": "Racine",
+  "quickNavigation": "Navigation rapide",
+  "pWysiwyg": "Commencer à écrir ici ...",
+  "timelines": {
+    "singular": "Chronologie",
+    "andEvent": "Chronologie et événement",
+    "story": "Histoire",
+    "name": "Nom",
+    "description": "Description",
+    "create": "Créer un timeline",
+    "update": "Mettre à jour un timeline",
+    "moment": {
+      "label": "Nouveau moment",
+      "create": "Ajouter une période au timeline",
+      "update": "Mise à jour de période"
+    },
+    "event": {
+      "create": "Nouvel événement",
+      "update": "Modifier l'événement"
+    },
+    "past": "Coller",
+    "cut": "Cut"
+  },
+  "local": {
+    "shortDays": ["L", "M", "M", "J", "V", "S", "D"]
+  },
+  "chapter": {
+    "singular": "Chapitre",
+    "number": "N° chapitre",
+    "pNumber": "Numéro du chapitre",
+    "title": "Titre du chapitre",
+    "noTitle": "Le titre du chapitre est <strong>requise</strong>",
+    "summary": "Résumé du chapitre",
+    "all": "Tous les chapitres",
+    "numberOf": "Nombre de",
+    "addTitle": "Ajouter un chapitre",
+    "updateTitle": "Modification du chapitre"
+  },
+  "project": {
+    "plural": "Projets",
+    "singular": "Projet",
+    "sizeTypes": ["mots", "caractères"],
+    "genders": [
+      "Générale",
+      "Fantaisie",
+      "Thriller",
+      "Horreur",
+      "Médicale",
+      "Science Fiction",
+      "Roman",
+      "Historique",
+      "Fiction",
+      "non-fiction",
+      "Détéctive",
+      "Tragédie",
+      "Dur à dire",
+      "Trop tôt pour identifier"
+    ],
+    "summary": "Résumé",
+    "startAt": "Date du début",
+    "endAt": "Date de fin",
+    "size": "Taille estimée",
+    "unit": "Unité",
+    "time": "Unité de temps",
+    "gender": "Genre",
+    "add": {
+      "title": "Nouveau projet",
+      "goodLuck": "Bonne chance!",
+      "pName": "Nom du livre",
+      "pDescription": "Description du livre",
+      "next": "Suivant",
+      "back": "Retour",
+      "estimation": "Estimations",
+      "cover": "Couverture",
+      "choose": "Choisir",
+      "reset": "Réinitialiser",
+      "finished": "Terminé",
+      "haveFinished": "Vous avez fini.",
+      "create": "Créer le projet"
+    },
+    "my": "Mes projets",
+    "archived": "Projets archivés"
+  },
+  "group": {
+    "general": {
+      "title": "Général",
+      "name": "Nom",
+      "description": "Description",
+      "alternateNames": "Noms alternatifs",
+      "biggestAchievement": "Plus grande réalisation",
+      "otherAchievements": "Autres accomplissements",
+      "biggestFailure": "Plus gros échec",
+      "otherFailures": "Autres échecs",
+      "territory": "Territoire",
+      "headquarter": "Siège social",
+      "transport": "Transport",
+      "technologyAndScience": "Technologie et science",
+      "uniquePossessions": "Unique possessions"
+    },
+    "culture": {
+      "title": "Culture",
+      "culture": "Culture",
+      "flag": "Drapeau",
+      "slogan": "Slogan",
+      "philosophy": "Philosophie",
+      "longTermGoals": "Objectifs à long terme",
+      "shortTermGoals": "Objectifs à court terme",
+      "traditions": "Traditions",
+      "rules": "Règles",
+      "associatedTrademarkItem": "Article de marque associé",
+      "punishments": "Les sanctions",
+      "treasures": "Treasures"
+    },
+    "history": {
+      "title": "Histoire",
+      "origin": "Origine",
+      "founder": "Fondateur",
+      "foundingDate": "Date de création",
+      "foundingHistory": "Histoire fondatrice",
+      "majorHistoricalEvents": "Grands événements historiques",
+      "dissolutionDate": "Date de dissolution",
+      "dissolutionHistory": "Historique de dissolution"
+    },
+    "ranks": {
+      "title": "Rangs",
+      "socialHierarchy": "Hierarchie sociale",
+      "highest": "Rang le plus élevé",
+      "secondHighest": "2e rang le plus élevé",
+      "thirdHighest": "3e rang le plus élevé",
+      "firstMedium": "1er rang moyen",
+      "secondMedium": "2nd medium rank",
+      "thirdMedium": "3e rang moyen",
+      "thirdLower": "3e rang le plus bas",
+      "secondLower": "2e rang le plus bas",
+      "lowest": "Rang le plus bas"
+    },
+    "notes": {
+      "title": "Notes",
+      "icon": "clipboard-outline",
+      "connectNote": "Connect note"
+    },
+    "add": {
+      "title": "Création d'un groupe",
+      "loading": "Création du groupe ...",
+      "success": "Le nouveau groupe a été crée",
+      "failure": "Création du groupe échouée"
+    },
+    "sub": "Sous groupes",
+    "singular": "Groupe",
+    "update": {
+      "select": "Séléction de personnages",
+      "title": "Modifier le groupe",
+      "image": "Taper sur l'image pour le remplacer",
+      "addCharacter": "Ajouter personnage"
+    }
+  },
+  "customField": {
+    "title": "Outils supplémentaires",
+    "customize": "Personnalisation des champs",
+    "name": "Nom du champs",
+    "pName": "Taper ici",
+    "value": "Valeur du champs",
+    "customized": "Champs personnalisés",
+    "edit": "Modifier les champs"
+  },
+  "imageModal": {
+    "select": "Séléctionner une image",
+    "other": "Séléctionner un autre image",
+    "upload": "Télécharger",
+    "loading": "Téléchargement ...",
+    "gallery": "Galerie",
+    "nb": "Il n'est pas nécessaire de re-télecherger les images. En cas de besoin, veuiller en séléctionner dans la galerie."
+  },
+  "note": {
+    "edit": "Editer la note",
+    "name": "Nom de la note",
+    "label": "Libellé",
+    "updateLoading": "Execution de l'opération ...",
+    "all": "Toutes les notes"
+  },
+  "projectSettings": {
+    "title": "Paramètres du projet",
+    "data": "Données du projet",
+    "cover": "Modifier l'image de couverture",
+    "edit": "Editer",
+    "additional": "Additionel",
+    "archive": "Archiver le projet",
+    "notification": "Notification",
+    "remember": "Me rappeller journalièrement le nombre de mot restant qu'il faut écrire.",
+    "finished": "Il semble que le projet soit terminé. Il vous reste aucun(e) {{val}}  à écrire.",
+    "update": {
+      "title": "Edition du projet",
+      "save": "Sauvegarder vos modifications"
+    },
+    "notify": {
+      "body": "Il reste encore {{remainWord}}",
+      "inboxList": "Bonjour! Actuellement,-il vous reste encore {{remainWord}}-{{sizeType}} à écrire"
+    }
+  },
+  "session": {
+    "singular": "Session",
+    "finishQuestion": "Voullez-vous terminer la séance ?",
+    "wordCount": "Nombre de mots écrits",
+    "warning": "Une séance clôturée n'est plus modifiable.",
+    "pWordCount": "Entrer le nombre de mot",
+    "required": "Ce champ est <strong>requise</strong>",
+    "list": {
+      "title": "Séances",
+      "work": "Au travail !",
+      "advise1": "Avant d'ouvrir une séance, vous devez créer au moins un chapitre auquel vous allez travailler",
+      "advise2": "Faîtes glisser une séance pour entrer le nombre de mots écrits."
+    },
+    "new": "Nouvelle séance"
+  },
+  "statistic": {
+    "title": "Usages & Statistiques",
+    "description": "Description du projet",
+    "creation": "Date de création",
+    "size": "Taille",
+    "end": "Fin estimée",
+    "duration": "Durrée estimée",
+    "criticMean": "Moyenne critique",
+    "number": "Nombre de chapitre",
+    "length": "Longueur moyenne",
+    "today": "Aujourd'hui",
+    "workDuration": "Durée de travail",
+    "written": "{{sizeType}} écrits",
+    "bestDay": "Meilleur jour",
+    "dailyMean": "Moyenne quotidienne",
+    "progress": "Avancement du projet"
+  },
+  "french": "Français",
+  "english": "Anglais"
+}

@@ -1,0 +1,164 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="goBack()"
+        slot="icon-only"
+        name="arrow-back"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>{{'editProfile.title'|translate}}</ion-title>
+    <ion-buttons slot="end" (click)="saveEditProfile()">
+      <ion-icon slot="icon-only" name="save"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- banner image  -->
+  <ion-row>
+    <ion-col
+      *ngIf="bannerLoaded"
+      size="12"
+      class="banner-col"
+      [style.background-image]="'url(' + srcBanner + ')'"
+    >
+      <!-- <ion-img [src]="srcBanner"></ion-img> -->
+    </ion-col>
+    <ion-col size="12" class="banner-col" *ngIf="!bannerLoaded">
+      <ion-skeleton-text
+        animated
+        style="width: 100%; height: 116px"
+      ></ion-skeleton-text>
+    </ion-col>
+  </ion-row>
+  <!-- profile picture  -->
+  <ion-row>
+    <ion-col size="12" class="avatar-col">
+      <ion-avatar class="avatar-pic">
+        <img *ngIf="avatarLoaded" [src]="srcAvatar" />
+        <ion-skeleton-text *ngIf="!avatarLoaded" animated></ion-skeleton-text>
+      </ion-avatar>
+    </ion-col>
+  </ion-row>
+  <!-- full name and description -->
+  <ion-row>
+    <ion-col class="text-center full-name" size="12">
+      {{user?.prenom}} {{user?.nom}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="text-center">
+      <b>{{user?.description}}</b>
+    </ion-col>
+  </ion-row>
+  <!-- tools  -->
+
+  <form [formGroup]="userForm" class="ion-padding">
+    <ion-list-header>
+      <h1>{{'editProfile.pdp'|translate}}</h1>
+    </ion-list-header>
+
+    <ion-item (click)="getPicture('avatar')" button>
+      <ion-avatar slot="start">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>{{'editProfile.upload'|translate}}</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-list-header>
+      <h1>{{'editProfile.pdc'|translate}}</h1>
+    </ion-list-header>
+
+    <ion-item (click)="getPicture('banner')" button>
+      <ion-avatar slot="start">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>{{'editProfile.upload'|translate}}</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-list-header>
+      <h1>{{'login.authentication'|translate}}</h1>
+    </ion-list-header>
+
+    <ion-item routerLink="/change-password" button>
+      <ion-avatar slot="start">
+        <ion-icon name="key-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>{{'editProfile.password'|translate}}</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-list-header>
+      <h1>{{'editProfile.email'|translate}}</h1>
+    </ion-list-header>
+    <mat-form-field class="full-width">
+      <mat-label>{{'user.email'|translate}}</mat-label>
+      <input
+        ngDefaultControl
+        required
+        matInput
+        [placeholder]="'user.email'|translate"
+        formControlName="email"
+        [(ngModel)]="newEmail"
+      />
+    </mat-form-field>
+
+    <ion-list-header>
+      <h1>{{'about'|translate}}</h1>
+    </ion-list-header>
+    <mat-form-field class="full-width">
+      <mat-label>{{'user.name'|translate}}</mat-label>
+      <input
+        ngDefaultControl
+        formControlName="lastName"
+        matInput
+        [placeholder]="'user.lastName'|translate"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>{{'user.firstName'|translate}}</mat-label>
+      <input
+        ngDefaultControl
+        formControlName="firstName"
+        matInput
+        [placeholder]="'user.firstName'|translate"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>{{'user.pseudo'|translate}}</mat-label>
+      <input
+        ngDefaultControl
+        formControlName="pseudo"
+        matInput
+        [placeholder]="'user.pseudo'|translate"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>{{'user.bio'|translate}}</mat-label>
+      <textarea
+        ngDefaultControl
+        formControlName="description"
+        matInput
+        [placeholder]="'editProfile.bio'|translate"
+      ></textarea>
+    </mat-form-field>
+
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        <ion-text>
+          <h3 style="margin-bottom: 0">{{'editProfile.private'|translate}}</h3>
+          <p>{{'editProfile.privateAccount'|translate}}</p>
+        </ion-text>
+      </ion-label>
+      <mat-checkbox
+        [checked]="isPrivate"
+        (change)="toggleIsPrivate($event)"
+        class="ion-margin-start"
+        color="warn"
+      ></mat-checkbox>
+    </ion-item>
+  </form>
+</ion-content>

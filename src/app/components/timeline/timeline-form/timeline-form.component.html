@@ -1,0 +1,58 @@
+<ion-list>
+  <ion-item>
+    <ion-label style="text-align: center; font-weight: 500">
+      {{ data.title }}
+    </ion-label>
+    <ion-button (click)="close()" fill="clear" slot="end">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-item *ngIf="data?.mode === 'update'">
+    <ion-row class="ion-justify-content-between full-width">
+      <ion-button
+        [color]="data?.isCurrentCopy ? 'warning' : 'primary'"
+        (click)="action('cut')"
+        fill="clear" *ngIf="data.type !== 'timeline'"
+      >
+        <ion-icon name="cut"></ion-icon>
+        &nbsp; &nbsp;{{'timeline.cut'|translate}}
+      </ion-button>
+
+      <ion-button
+        [disabled]="!data.activePaste"
+        (click)="action('paste')"
+        *ngIf="data.type !== 'event'"
+        fill="clear"
+      >
+        <ion-icon name="clipboard"></ion-icon>
+        &nbsp;{{'timeline.paste'|translate}}
+      </ion-button>
+
+      <ion-button (click)="action()" fill="clear">
+        <ion-icon name="trash"></ion-icon>
+        {{'trash.buttons.softDelete'|translate}}
+      </ion-button>
+    </ion-row>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">{{
+      "timelines.name" | translate
+    }}</ion-label>
+    <ion-input [(ngModel)]="data.name"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="data?.description !== undefined">
+    <ion-label position="floating">{{
+      "timelines.description" | translate
+    }}</ion-label>
+    <ion-input [(ngModel)]="data.description"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-button (click)="save()" slot="end" color="warning">
+      {{ "buttons.save" | translate }}
+    </ion-button>
+  </ion-item>
+</ion-list>

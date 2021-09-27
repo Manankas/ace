@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-avatar>
+        <img [src]="recipient.avatar || 'assets/male_user.svg'" />
+      </ion-avatar>
+      <ion-label class="ion-margin-start">{{ recipient.nom }}</ion-label>
+    </ion-item>
+    <ion-icon
+      slot="end"
+      name="close"
+      color="secondary"
+      class="ion-margin-end"
+      color="danger"
+      (click)="close()"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    style="height: calc(100vh - 57px); position: relative"
+    class="flex column"
+  >
+    <ion-progress-bar
+      *ngIf="loading"
+      [buffer]="1"
+      type="indeterminate"
+    ></ion-progress-bar>
+
+    <div
+      scrollable
+      style="overflow-y: auto; overflow-x: hidden; flex-grow: 1"
+      class="flex column-reverse"
+      (scrollPosition)="scrollHandler($event)"
+    >
+      <app-discussion-item
+        *ngFor="let message of messages"
+        [class]="
+          message.convId[0] === user.id ? 'right-animation ' : 'left-animation'
+        "
+        class="flex column-reverse item"
+        [userId]="user.id"
+        [receiverAvatar]="recipient.avatar"
+        [userAvatar]="user.avatar"
+        [message]="message"
+      ></app-discussion-item>
+    </div>
+
+    <app-send-message
+      [messageType]="0"
+      [receiverId]="recipient.id"
+      (submit)="sendMessage($event)"
+    ></app-send-message>
+  </div>
+</ion-content>

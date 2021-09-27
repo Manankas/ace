@@ -1,0 +1,13 @@
+<mat-form-field style="width: 100%;">
+  <mat-label>{{ label }}</mat-label>
+  <textarea
+    matInput
+    cdkTextareaAutosize
+    #autosize="cdkTextareaAutosize"
+    cdkAutosizeMinRows="1"
+    cdkAutosizeMaxRows="5"
+    [(ngModel)]="modelValue"
+    (ngModelChange)="modelValueChange.emit(modelValue)"
+  >
+  </textarea>
+</mat-form-field>

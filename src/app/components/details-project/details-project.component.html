@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()" color="secondary">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 600; font-size: 16px">{{
+      project?.name
+    }}</ion-title>
+    <ion-icon
+      slot="end"
+      name="settings-outline"
+      class="ion-margin-end"
+      (click)="presentProjectSettingsModal()"
+    >
+    </ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="bg-ace">
+    <!--Projet-->
+
+    <ion-card>
+      <ion-card-header class="ion-no-padding">
+        <ion-list-header style="font-size: 18px; font-weight: 600">
+          {{ "project.singular" | translate }}
+        </ion-list-header>
+      </ion-card-header>
+
+      <ion-card-content class="ion-no-padding">
+        <app-statistic [project]="project"> </app-statistic>
+
+        <app-collaboration
+          [projectId]="project.id"
+          [projectOwnerId]="project.userId"
+        >
+        </app-collaboration>
+
+        <mat-accordion displayMode="flat" panelState="collapsed">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <ion-item lines="none">
+                <ion-icon
+                  slot="start"
+                  style="color: black"
+                  name="information-circle-outline"
+                ></ion-icon>
+                {{ "project.summary" | translate }}
+              </ion-item>
+            </mat-expansion-panel-header>
+            <app-project-resume [project]="project"></app-project-resume>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Couverture -->
+
+    <app-cover *ngIf="isEntered" [coverSrc]="project.avatar"></app-cover>
+
+    <!--timeline-->
+    <app-timeline
+      [timelines]="toArray(project.timelines)"
+      [projectId]="project.id"
+    ></app-timeline>
+
+    <!-- Sessions -->
+    <app-sessions
+      [projectId]="project.id"
+      [chapters]="toArray(project.chapters)"
+    >
+    </app-sessions>
+
+    <!-- Personnages -->
+    <app-characters-slide-list
+      *ngIf="isEntered"
+      [projectId]="project.id"
+      [characters]="toArray(project.characters)"
+    >
+    </app-characters-slide-list>
+
+    <app-group
+      [projectId]="project.id"
+      [groups]="toArray(project.groups)"
+      [characters]="toArray(project.characters)"
+    >
+    </app-group>
+
+    <!-- Chapitres-->
+
+    <app-chapters
+      [projectId]="project.id"
+      [sizeType]="project.sizeType"
+      [chapters]="toArray(project.chapters)"
+    ></app-chapters>
+
+    <!--WLocation-->
+    <app-wlocation
+      *ngIf="isEntered"
+      [projectId]="project.id"
+      [wLocations]="toArray(project.wLocations)"
+      [loading]="loading[2]"
+    ></app-wlocation>
+
+    <!--species --->
+    <app-species
+      [projectId]="project.id"
+      [species]="toArray(project.species)"
+    ></app-species>
+
+    <!--Items-->
+    <app-items
+      [projectId]="project.id"
+      [items]="toArray(project.items)"
+    ></app-items>
+
+    <!-- Tache -->
+    <ion-list-header style="margin-top: 15px">
+      <ion-label style="font-weight: 900; font-size: 20px">{{
+        "entities.tasks" | translate
+      }}</ion-label>
+    </ion-list-header>
+
+    <ion-item
+      button
+      lines="none"
+      detail
+      style="
+        --background: #ffffff5e;
+        border-top: 1px solid #e6e4e4;
+        border-bottom: 1px solid #e6e4e4;
+      "
+      (click)="presentTachesModal()"
+    >
+      <ion-img
+        slot="start"
+        src="assets/icon/list.svg"
+        style="width: 20px"
+      ></ion-img>
+      <ion-label> {{ "task.organization" | translate }} </ion-label>
+    </ion-item>
+
+    <!-- Notes -->
+    <ion-list-header style="margin-top: 15px">
+      <ion-label style="font-weight: 900; font-size: 20px">{{
+        "entities.notes" | translate
+      }}</ion-label>
+    </ion-list-header>
+
+    <app-note
+      [projectId]="project.id"
+      [notes]="toArray(project.notes)"
+    ></app-note>
+
+    <app-trash [project]="project"></app-trash>
+  </ion-list>
+</ion-content>

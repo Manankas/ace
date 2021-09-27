@@ -1,0 +1,42 @@
+<ion-item lines="none">
+  <ion-label class="ion-text-center">
+    <div style="width: 100%" class="flex justify-center">
+      <ion-avatar size="small">
+        <img
+          style="width: 50px; height: 50px"
+          [src]="data.avatar||'assets/male_user.svg'"
+        />
+      </ion-avatar>
+    </div>
+    <h2 style="font-weight: bold; margin: 0">{{ data.isCurrentUser ? ('you'|translate) : data.name }}</h2>
+    <p>{{ ("member.roles" | translate)[data.banned ? 4 : data.role] }}</p>
+  </ion-label>
+</ion-item>
+
+<ion-list lines="none" *ngIf="!data.isCurrentUser">
+  <ion-item (click)="dismiss('account')">
+    <ion-icon slot="start" name="person"></ion-icon>
+    <ion-label>{{'member.account'|translate}}</ion-label>
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+  <ion-item (click)="dismiss('chat')" button>
+    <ion-icon slot="start" name="chatbox"></ion-icon>
+    <ion-label>{{'member.send'|translate}}</ion-label>
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+  <ng-container *ngIf="data.isOwner">
+    <ion-item (click)="dismiss('role')" button>
+      <ion-icon slot="start" name="pencil"></ion-icon>
+      <ion-label>{{'member.editRole'|translate}}</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="dismiss('ban')" button>
+      <ion-icon slot="start" name="lock-closed"></ion-icon>
+      <ion-label>{{('member.ban'|translate)[data.banned ? 1 : 0]}}</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </ng-container>
+</ion-list>

@@ -1,0 +1,22 @@
+<ion-grid>
+  <ion-row>
+    <ion-col
+      size="4"
+      style="height: 123.66px"
+      *ngFor="let image of images;"
+      (click)="select.emit(image)"
+    >
+      <div
+        matRipple
+        [matRippleCentered]="false"
+        [matRippleRadius]="200"
+        style="width: 100%; height: 100%"
+      >
+        <img
+          style="width: 100%; height: 100%; object-fit: cover"
+          [src]="image.url"
+        />
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

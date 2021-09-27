@@ -1,0 +1,121 @@
+<span *ngIf="isAddCard; else notAdd">
+  <div
+    *ngIf="cardType === 'profil'; else notProfil"
+    class="avatar add-avatar flex justify-center items-center"
+  >
+    <ion-icon
+      color="primary"
+      style="font-size: 56px"
+      class="add-icon"
+      name="add"
+    ></ion-icon>
+  </div>
+
+  <ng-template #notProfil>
+    <ion-card
+      button
+      style="width: 110px; border-radius: 25px; box-shadow: 0 5px 10px"
+      [style]="cardType === 'square' ? 'height: 110px;' : 'height: 90px'"
+    >
+      <div
+        class="flex justify-center items-center"
+        style="width: 110px"
+        [style]="cardType === 'square' ? 'height: 110px;' : 'height: 90px'"
+      >
+        <ion-icon
+          style="font-size: 56px; color: var(--ion-color-primary)"
+          name="add-outline"
+        ></ion-icon>
+      </div>
+    </ion-card>
+  </ng-template>
+</span>
+
+<ng-template #notAdd>
+  <span *ngIf="loading; else notLoading">
+    <div
+      *ngIf="cardType === 'profil'; else notProfil"
+      class="flex justify-center items-center"
+      style="width: 50px; height: 50px; margin: 5px 0"
+    >
+      <ion-avatar style="width: 50px; height: 50px">
+        <ion-skeleton-text
+          animated
+          style="width: 50px; height: 50px"
+        ></ion-skeleton-text>
+      </ion-avatar>
+    </div>
+
+    <ng-template #notProfil>
+      <ion-card
+        button
+        class="flex justify-center items-center"
+        style="width: 110px; border-radius: 25px; box-shadow: 0 5px 10px"
+        [style]="cardType === 'square' ? 'height: 110px;' : 'height: 90px'"
+      >
+        <div
+          style="
+            position: absolute;
+            width: 110px;
+            border-radius: 25px;
+            top: 0px;
+          "
+          [style]="cardType === 'square' ? 'height: 110px;' : 'height: 90px'"
+        >
+          <ion-skeleton-text
+            animated
+            [style]="cardType === 'square' ? 'height: 110px;' : '90px'"
+            style="width: 110px; margin: 0"
+          ></ion-skeleton-text>
+        </div>
+        <div
+          class="flex justify-center items-center"
+          style="z-index: 10; width: 110px; border-radius: 25px; top: 0px"
+          [style]="cardType === 'square' ? 'height: 110px;' : 'height: 90px'"
+        >
+          <ion-skeleton-text
+            animated
+            style="width: 50px; height: 50px"
+          ></ion-skeleton-text>
+        </div>
+      </ion-card>
+    </ng-template>
+  </span>
+
+  <ng-template #notLoading>
+    <div *ngIf="cardType === 'profil'; else notProfil">
+      <ion-avatar class="avatar">
+        <img
+          style="height: 100%"
+          style="object-fit: cover; width: 100%; height: 100%"
+          [src]="imageSrc || 'assets/icon/Avatar.svg'"
+        />
+      </ion-avatar>
+    </div>
+
+    <ng-template #notProfil>
+      <ion-card
+        button
+        style="width: 110px; border-radius: 25px; box-shadow: 0 5px 10px"
+        [style]="cardType === 'square' ? 'height: 110px;' : 'height: 90px'"
+        class="flex justify-center items-center"
+      >
+        <img
+          *ngIf="imageSrc; else noImage"
+          style="
+            width: 110px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+          "
+          [style]="cardType === 'square' ? 'height: 110px;' : 'height: 90px'"
+          [src]="imageSrc"
+        />
+        <ng-template #noImage>
+          <ngx-avatar [size]="113" [name]="name" [round]="false"></ngx-avatar>
+        </ng-template>
+      </ion-card>
+    </ng-template>
+  </ng-template>
+</ng-template>

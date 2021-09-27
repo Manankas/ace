@@ -1,0 +1,16 @@
+/* Transparent standard */
+ion-header,
+ion-toolbar {
+  // --background: transparent;
+  // --ion-color-base: transparent !important;
+  // --background: rgb(255, 255, 255, 0);
+}
+
+.header-md::after {
+  background-image: none;
+}
+
+ion-header {
+  position: fixed;
+  top: 0;
+}

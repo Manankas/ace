@@ -1,0 +1,91 @@
+.msg {
+  display: flex;
+  padding: 5px 0;
+  position: relative;
+  padding: 5px 10px;
+  margin: 5px 0;
+}
+
+.msg-position {
+  max-width: 70%;
+  display: flex;
+  padding: 0 10px;
+  margin: 0 10px;
+  position: relative;
+  filter: drop-shadow(3px 3px 1.5px rgba(50, 50, 0, 0.5));
+}
+
+.msg-box {
+  max-width: 100%;
+  display: flex;
+}
+
+.msg-container {
+  margin: 0 0 0 5px;
+  z-index: 2;
+  border-radius: 10px;
+  word-wrap: break-word;
+  padding: 5px 20px;
+  position: relative;
+  max-width: 200px;
+  white-space: pre-line;
+  min-width: 5px;
+  min-height: 30px;
+}
+
+.msg-container-left {
+  background: #f2f2f2;
+}
+
+.msg-container-right {
+  background: var(--ion-color-tertiary);
+  color: white;
+}
+
+.msg-left {
+  width: 35px;
+  height: 20px;
+  position: absolute;
+  contain: content;
+  bottom: 0px;
+  left: 35px;
+  z-index: 2;
+  &:before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 0 30px #f2f2f2;
+    position: absolute;
+    border-radius: 30px;
+    left: -30px;
+    bottom: 0px;
+  }
+}
+
+.msg-right {
+  width: 35px;
+  height: 20px;
+  position: absolute;
+  contain: content;
+  bottom: 0px;
+  right: 20px;
+  z-index: 2;
+  &:before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 0 30px var(--ion-color-tertiary);
+    position: absolute;
+    border-radius: 30px;
+    right: -30px;
+    bottom: 0px;
+  }
+}
+
+.avatar {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: -5px;
+  background-color: white;
+}

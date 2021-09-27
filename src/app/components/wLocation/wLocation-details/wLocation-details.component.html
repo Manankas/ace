@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      (click)="close()"
+      slot="start"
+      name="close"
+      class="ion-margin-start"
+    ></ion-icon>
+    <ion-title>{{ selectedWLocation.general.name }}</ion-title>
+    <ion-button slot="end" fill="clear" (click)="openLocationsTreeModal()">
+      <mat-icon>move_to_inbox</mat-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear" (click)="openEditionModal()">
+      <mat-icon>mode_edit</mat-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding-bottom: 10px" class="flex items-center">
+    <app-card-avatar
+      slot="start"
+      *ngIf="selectedWLocation.avatar; else noAvatar"
+      [isAddCard]="false"
+      [imageSrc]="selectedWLocation.avatar"
+      cardType="rectangle"
+    ></app-card-avatar>
+
+    <ng-template #noAvatar>
+      <app-card-avatar
+        slot="start"
+        [isAddCard]="false"
+        [name]="selectedWLocation.general.name"
+        cardType="rectangle"
+      ></app-card-avatar>
+    </ng-template>
+    <h2 style="font-weight: bold">{{ selectedWLocation.general.name }}</h2>
+  </div>
+  <app-wlocation-card
+    title="Sous locations"
+    *ngIf="isEntered"
+    [wLocations]="wLocations"
+    [projectId]="projectId"
+    [parentId]="selectedWLocation.id"
+  ></app-wlocation-card>
+  <ion-item lines="none" style="--background: transparent">
+    <h1 style="font-weight: 900; font-size: 20px">
+      {{ "image" | translate }}s
+    </h1>
+  </ion-item>
+
+  <app-image-slider
+    *ngIf="isEntered"
+    [srcImages]="selectedWLocation.images"
+    [projectId]="projectId"
+    [collectionId]="selectedWLocation.id"
+    collectionPath="wLocations"
+  ></app-image-slider>
+
+  <ion-card>
+    <ion-item lines="none">
+      <h1 style="font-weight: 900; font-size: 20px">
+        {{ "information" | translate }}s
+      </h1>
+    </ion-item>
+    <mat-accordion displayMode="flat" panelState="collapsed">
+      <mat-expansion-panel *ngFor="let catKey of categoryKeys">
+        <mat-expansion-panel-header>
+          <ion-item lines="none">
+            <mat-icon slot="start">{{ icons[catKey] }}</mat-icon>
+            {{ "wLocation." + catKey + ".title" | translate }}
+          </ion-item>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let key of getKeys(selectedWLocation[catKey])">
+          <ion-item lines="none" *ngIf="selectedWLocation[catKey][key]">
+            <ion-label class="ion-text-wrap">
+              <ion-text>
+                <h3 style="margin: 0">
+                  {{ "wLocation." + catKey + "." + key | translate }}
+                </h3>
+              </ion-text>
+              <ion-text color="medium">
+                <span>{{ selectedWLocation[catKey][key] }}</span>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+        </ng-container>
+      </mat-expansion-panel>
+      <!--custom fields-->
+      <app-custom-field-list
+        [customFields]="selectedWLocation.customFields"
+      ></app-custom-field-list>
+    </mat-accordion>
+  </ion-card>
+</ion-content>

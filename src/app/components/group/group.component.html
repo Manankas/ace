@@ -1,0 +1,14 @@
+<ion-item
+  button
+  lines="none"
+  detail
+  style="
+    --background: #ffffff5e;
+    border-top: 1px solid #e6e4e4;
+    border-bottom: 1px solid #e6e4e4;
+  "
+  (click)="groupListModal()"
+>
+  <mat-icon name="people" color="black" slot="start">group</mat-icon>
+  <ion-label>{{ "entities.groups" | translate }}</ion-label>
+</ion-item>

@@ -1,0 +1,8 @@
+<app-wysiwyg
+  [dismissOnSave]="false"
+  [title]="'challenge.editor'|translate"
+  (save)="save($event)"
+  (showInfo)="showChallenge()"
+  [content]="participation.content"
+>
+</app-wysiwyg>

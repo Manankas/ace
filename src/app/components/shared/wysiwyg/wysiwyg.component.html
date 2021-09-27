@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-label>
+      <h2
+        style="margin-top: 10px;font-weight: 900; line-height: 10px"
+      >
+        {{ title }}
+      </h2>
+      <span
+        id="counter"
+        style="font-size: 12px; display: none;"
+      ></span>
+    </ion-label>
+    <ion-button *ngIf="!dismissOnSave" (click)="showInfo.emit()" slot="end" fill="clear">
+      <ion-icon name="information-circle-outline"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear" (click)="onContentSaved()">
+      <mat-icon>save</mat-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="background: red;">
+  <quill-editor
+    [formControl]="contentCtrl"
+    [modules]="moduleOptions"
+    [spellcheck]="false"
+    class="flex column-reverse"
+    style="height: 90vh"
+    [placeholder]="'pWysiwyg'|translate"
+    (onEditorCreated)="contentCtrl.setValue(content)"
+  >
+  </quill-editor>
+</ion-content>

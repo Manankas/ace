@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <ion-title>{{ "profile.collaboration" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-tab-group
+    mat-align-tabs="center"
+    dynamicHeight
+    mat-stretch-tabs
+    *ngIf="currUserId !== undefined"
+  >
+    <mat-tab
+      *ngIf="currUserId === projectOwnerId"
+      [label]="'profile.collaboration' | translate"
+    >
+      <app-collaboration-activation [projectId]="projectId">
+      </app-collaboration-activation>
+    </mat-tab>
+
+    <mat-tab [label]="'chat.singular' | translate">
+      <app-collaboration-chat
+        [collaborators]="collaborators"
+        [receiverId]="projectId"
+      ></app-collaboration-chat>
+    </mat-tab>
+
+    <mat-tab [label]="'member.singular' | translate">
+      <app-collaboration-members
+        [projectId]="projectId"
+        [collaborators]="collaborators"
+        [currUserId]="currUserId"
+        [projectOwnerId]="projectOwnerId"
+      ></app-collaboration-members>
+    </mat-tab>
+  </mat-tab-group>
+</ion-content>

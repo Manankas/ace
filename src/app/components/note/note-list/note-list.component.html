@@ -1,0 +1,40 @@
+<div
+  *ngIf="!isFolder; else folder"
+  [innerHTML]="selectedNote.content"
+  class="ion-padding"
+></div>
+
+<ng-template #folder>
+  <ion-list
+    *ngFor="let note of notes; let i = index"
+    lines="none"
+    style="background: transparent; padding: 0"
+  >
+    <ion-item
+      *ngIf="note.parentId === parentId && !note.archived"
+      (click)="showNoteDetails(i)"
+      button
+      style="border-radius: 15px"
+      style="
+        --background: #ffffff5e;
+        border-top: 1px solid #e6e4e4;
+        border-bottom: 1px solid #e6e4e4;
+      "
+    >
+      <mat-icon aria-hidden="true" slot="start" style="color: #0000008a">{{
+        note?.content === undefined ? "folder" : "insert_drive_file"
+      }}</mat-icon>
+      <ion-label>{{ note.name }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ng-template>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button *ngIf="isFolder; else editor" (click)="openBottomSheet()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  <ng-template #editor>
+    <ion-fab-button (click)="openEditor()">
+      <ion-icon name="keypad"></ion-icon>
+    </ion-fab-button>
+  </ng-template>
+</ion-fab>

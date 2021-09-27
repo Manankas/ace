@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <button (click)="closeModal()" slot="start" mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <ion-title *ngIf="!timelines.length; else listTimeline">
+      {{ "timelines.singular" | translate }}
+    </ion-title>
+    <ng-template #listTimeline>
+      <mat-form-field style="width: 100%" class="ion-margin-top">
+        <mat-select [(ngModel)]="tI">
+          <ng-container *ngFor="let timeline of timelines; let i = index">
+            <mat-option *ngIf="!timeline.archived" [value]="i">
+              {{ timeline.name }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <button (click)="updateTimeline()" slot="end" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <mat-vertical-stepper
+    style="
+      background-image: url(assets/images/texture.jpg);
+      --background: url(assets/images/texture.jpg);
+      background-attachment: inherit;
+    "
+    *ngIf="timelines.length"
+  >
+    <mat-step
+      *ngFor="let moment of timelines[tI].moments; let i = index"
+      [editable]="false"
+      state="done"
+    >
+      <ng-template matStepLabel>
+        <div class="stepper-header-overlay" (click)="updateMoment(i)"></div>
+        <span style="font-size: 16px">{{ moment.name }}</span>
+      </ng-template>
+
+      <mat-list class="ion-margin-bottom">
+        <ng-container *ngFor="let event of moment.events; let evt = index">
+          <mat-list-item (click)="updateEvent(i, evt)" matRipple>
+            <h4 matLine style="font-weight: 500">{{ event.name }}</h4>
+            <p matLine>{{ event.description }}</p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-list>
+
+      <button (click)="addEvent(i)" mat-icon-button color="primary">
+        <mat-icon style="color: var(--ion-color-secondary)"
+          >add_circle</mat-icon
+        >
+      </button>
+    </mat-step>
+
+    <mat-step [editable]="false" state="add">
+      <ng-template matStepLabel>
+        <div class="stepper-header-overlay" (click)="addMoment()"></div>
+        {{ "timelines.moment.label" | translate }}
+      </ng-template>
+    </mat-step>
+
+    <ng-template matStepperIcon="done">
+      <mat-icon>timelapse</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="add">
+      <mat-icon>add</mat-icon>
+    </ng-template>
+  </mat-vertical-stepper>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addTimeline()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

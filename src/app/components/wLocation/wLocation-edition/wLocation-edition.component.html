@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 600; font-size: 16px">{{
+      "wLocation.update.title" | translate
+    }}</ion-title>
+    <ion-button slot="end" fill="clear" (click)="deleteConfirm()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+
+    <ion-button slot="end" fill="clear" (click)="updateWLocation()">
+      <ion-icon name="save"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    style="padding-bottom: 10px"
+    class="flex justify-center items-center column"
+  >
+    <app-card-avatar
+      slot="start"
+      *ngIf="wLocationClone.avatar; else noAvatar"
+      [isAddCard]="false"
+      [imageSrc]="wLocationClone.avatar"
+      cardType="rectangle"
+      (click)="openImageModal()"
+    ></app-card-avatar>
+
+    <ng-template #noAvatar>
+      <app-card-avatar
+        slot="start"
+        [isAddCard]="false"
+        [name]="wLocationClone.general.name"
+        cardType="rectangle"
+        (click)="openImageModal()"
+      ></app-card-avatar>
+    </ng-template>
+    <div style="color: grey">{{ "group.update.image" | translate }}</div>
+  </div>
+
+  <ion-card>
+    <ion-item lines="none">
+      <h1 style="font-weight: 900; font-size: 20px">
+        {{ "information" | translate }}s
+      </h1>
+    </ion-item>
+
+    <mat-accordion displayMode="flat" panelState="collapsed">
+      <mat-expansion-panel *ngFor="let catKey of categoryKeys">
+        <mat-expansion-panel-header>
+          <ion-item lines="none">
+            <mat-icon slot="start">{{ icons[catKey] }}</mat-icon>
+            {{ "wLocation." + catKey + ".title" | translate }}
+          </ion-item>
+        </mat-expansion-panel-header>
+        <app-autogrow-textarea
+          *ngFor="let key of getKeys(wLocationClone[catKey])"
+          [label]="'wLocation.' + catKey + '.' + key | translate"
+          [(modelValue)]="wLocationClone[catKey][key]"
+        >
+        </app-autogrow-textarea>
+      </mat-expansion-panel>
+
+      <!-- Additionnal  tools -->
+      <app-custom-field
+        path="wLocations"
+        [itemId]="wLocationClone.id"
+        [projectId]="projectId"
+        [customFields]="wLocationClone.customFields"
+      ></app-custom-field>
+    </mat-accordion>
+  </ion-card>
+</ion-content>

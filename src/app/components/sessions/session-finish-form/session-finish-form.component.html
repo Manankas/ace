@@ -1,0 +1,37 @@
+<div style="background: white; padding: 15px; border-radius: 30px 30px 0 0">
+  <h3 style="margin-bottom: 0">{{'session.finishQuestion'|translate}}</h3>
+  <ion-text color="medium">
+    {{'session.warning'|translate}}
+  </ion-text>
+  <form [formGroup]="finishSessionFormGroup" class="ion-padding-top">
+    <mat-form-field style="width: 100%">
+      <mat-label>{{'session.wordCount'|translate}}</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="nbWordsCtrl"
+        [placeholder]="'session.pWordCount'|translate"
+        maxlength="6"
+        required
+      />
+      <mat-error
+        *ngIf="finishSessionFormGroup.get('nbWordsCtrl').hasError('required')"
+        [innerHTML]="'session.required'|translate"
+      >
+      </mat-error>
+    </mat-form-field>
+    <ion-row class="ion-nowrap ion-no-margin">
+        <ion-col size="6">
+          <ion-button (click)="cancel()">{{'buttons.cancel'|translate}}</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button
+            [disabled]="!finishSessionFormGroup.valid"
+            (click)="finish()"
+            >
+            {{'register.finish'|translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+  </form>
+</div>

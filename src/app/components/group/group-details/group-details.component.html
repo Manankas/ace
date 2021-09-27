@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()" color="secondary">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>{{ selectedGroup.general.name }}</ion-title>
+    <button mat-icon-button slot="end" (click)="openGroupTreeModal()">
+      <mat-icon style="color: var(--ion-color-secondary)"
+        >move_to_inbox</mat-icon
+      >
+    </button>
+    <button mat-icon-button slot="end" (click)="openUpdateGroup()">
+      <mat-icon style="color: var(--ion-color-secondary)">mode_edit</mat-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding-bottom: 10px" class="flex items-center">
+    <app-card-avatar
+      slot="start"
+      *ngIf="selectedGroup.avatar; else noAvatar"
+      [isAddCard]="false"
+      [imageSrc]="selectedGroup.avatar"
+      cardType="rectangle"
+    ></app-card-avatar>
+
+    <ng-template #noAvatar>
+      <app-card-avatar
+        slot="start"
+        [isAddCard]="false"
+        [name]="selectedGroup.general.name"
+        cardType="rectangle"
+      ></app-card-avatar>
+    </ng-template>
+    <h2 style="font-weight: bold">{{ selectedGroup.general.name }}</h2>
+  </div>
+
+  <ion-item lines="none">
+    <h1 style="font-weight: 900; font-size: 20px">
+      {{ "group.sub" | translate }}
+    </h1>
+  </ion-item>
+
+  <app-card-slider
+    *ngIf="isEntered"
+    cardType="rectangle"
+    [datas]="groups"
+    [filter]="selectedGroup.id"
+    (clickAdd)="openAddGroupForm()"
+    (clickCard)="showGroupDetails($event)"
+  ></app-card-slider>
+
+  <ion-item lines="none">
+    <h1 style="font-weight: 900; font-size: 20px">
+      {{ "image" | translate }}s
+    </h1>
+  </ion-item>
+
+  <app-image-slider
+    *ngIf="isEntered"
+    [srcImages]="selectedGroup.images"
+    [projectId]="projectId"
+    [collectionId]="selectedGroup.id"
+    collectionPath="groups"
+  ></app-image-slider>
+
+  <ion-item lines="none">
+    <h1 style="font-weight: 900; font-size: 20px">
+      {{ "information" | translate }}s
+    </h1>
+  </ion-item>
+
+  <mat-accordion displayMode="flat" panelState="collapsed">
+    <mat-expansion-panel *ngFor="let catKey of categoryKeys">
+      <mat-expansion-panel-header>
+        <ion-item lines="none">
+          <mat-icon slot="start">{{ icons[catKey] }}</mat-icon>
+          {{ "group." + catKey + ".title" | translate }}
+        </ion-item>
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let key of getKeys(selectedGroup[catKey])">
+        <ion-item lines="none" *ngIf="selectedGroup[catKey][key]">
+          <ion-label class="ion-text-wrap">
+            <ion-text>
+              <h3 style="margin: 0">
+                {{ "group." + catKey + "." + key | translate }}
+              </h3>
+            </ion-text>
+            <ion-text color="medium">
+              <span>{{ selectedGroup[catKey][key] }}</span>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+    </mat-expansion-panel>
+    <!--custom fields-->
+    <app-custom-field-list
+      [customFields]="selectedGroup.customFields"
+    ></app-custom-field-list>
+    <!-- MEMBRES -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <ion-item lines="none" class="ion-text-uppercase">
+          <ion-icon
+            slot="start"
+            style="color: black"
+            name="happy-outline"
+          ></ion-icon>
+          {{ "member.singular" | translate }}s
+        </ion-item>
+      </mat-expansion-panel-header>
+      <app-character-list [characters]="getMembers(selectedGroup.members)">
+      </app-character-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ion-content>

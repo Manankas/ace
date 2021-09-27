@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'profile.collaboration'|translate}}</ion-title>
+    <ion-toggle
+      slot="end"
+      [(ngModel)]="active"
+      [checked]="active"
+      (ngModelChange)="updateCollaboration()"
+      color="primary"
+    ></ion-toggle>
+  </ion-toolbar>
+</ion-header>
+
+<div *ngIf="active" class="ion-text-center">
+  <ngx-qrcode [value]="projectId" class="ion-text-center"></ngx-qrcode>
+  <ion-text color="warning" long-press (press)="copyCode()">
+    <h1
+      class="code"
+      style="margin-bottom: 2px; font-weight: bold; font-size: 2em"
+    >
+      {{ projectId }}
+    </h1>
+  </ion-text>
+  <p>{{'collaboration.activation.explaining'|translate}}</p>
+</div>
+<div *ngIf="!active" class="ion-margin">
+  {{'collaboration.activation.subExplaining'|translate}}
+</div>
+<h4 class="ion-padding-start" style="font-size: 20px; font-weight: bolder">
+  {{'collaboration.activation.question'|translate}}
+</h4>
+<ion-text>
+  <ol>
+    <li *ngFor="let res of ('collaboration.activation.responses'|translate)">
+      {{res}}
+    </li>
+  </ol>
+</ion-text>
+<div class="ion-padding-start ion-padding-bottom">
+  {{'collaboration.activation.confident'|translate}}
+</div>

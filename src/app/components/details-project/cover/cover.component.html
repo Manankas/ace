@@ -1,0 +1,16 @@
+<ion-list-header style="margin-top: 15px">
+  <ion-label style="font-weight: 900; font-size: 20px"
+    >{{'editProfile.pdc'|translate}}</ion-label
+  >
+</ion-list-header>
+
+<div class="cards-global-container">
+  <div
+    class="cards-container"
+    style="grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3)"
+  >
+    <ng-container>
+      <app-project-card [coverSrc]="coverSrc"></app-project-card>
+    </ng-container>
+  </div>
+</div>

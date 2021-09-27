@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="dismiss()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>{{ "entities.tasks" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-ace">
+  <h3 class="ion-margin-vertical ion-text-center">
+    {{ "task.advise" | translate }}
+  </h3>
+  <div
+    style="width: 100%; min-height: calc((100vh - 56px) / 3)"
+    *ngFor="let status of [0, 1, 2]"
+  >
+    <ion-list-header>
+      <ion-label style="font-weight: 900; font-size: 20px">{{
+        ("task.status" | translate)[status]
+      }}</ion-label>
+    </ion-list-header>
+
+    <ng-container *ngFor="let task of tasks; let it = index">
+      <div class="add-item" *ngIf="!task.archived && task.status === status">
+        <app-tache-slide-item
+          class="tache-item remove-item"
+          [status]="task.status"
+          [important]="task.marked"
+          [label]="task.content"
+          [labelBtnFirst]="
+            ('task.status' | translate)[task.status <= 1 ? task.status + 1 : 1]
+          "
+          [labelBtnSecond]="
+            ('task.status' | translate)[task.status !== 0 ? 0 : 2]
+          "
+          (btnClickedFirst)="
+            onChangeStatusBtn(
+              $event,
+              task.status <= 1 ? task.status + 1 : 1,
+              it
+            )
+          "
+          (btnClickedSecond)="
+            onChangeStatusBtn($event, task.status !== 0 ? 0 : 2, it)
+          "
+          (btnClickedDelete)="onDeleteItem($event, it)"
+          (btnClickedEdit)="updateTaskModal(it)"
+        >
+        </app-tache-slide-item>
+      </div>
+    </ng-container>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

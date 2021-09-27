@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button routerLink="/login" slot="start" fill="clear">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>{{'register.title'|translate}}</ion-title>
+    <ion-button slot="end" fill="clear">
+      <ion-icon name="person-add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top ion-padding-bottom">
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        class=""
+        size-sm="12"
+        size-md="4"
+        offset-md="4"
+        *ngIf="registerForm"
+      >
+        <form [formGroup]="registerForm" (ngSubmit)="onSinUp()">
+          <ion-card>
+            <ion-card-header class="ion-no-padding">
+              <ion-list-header style="opacity: 0.8" color="secondary">
+                <ion-icon
+                  class="ion-margin-end"
+                  name="information-circle"
+                ></ion-icon>
+                <ion-label class="ion-padding-vertical" style="font-size: 22px">
+                  {{'register.general'|translate}}
+                </ion-label>
+              </ion-list-header>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-card style="box-shadow: none">
+            <ion-item>
+              <ion-label position="floating"
+                >{{'user.name'|translate}}</ion-label
+              >
+              <ion-input type="text" formControlName="nom" ngDefaultControl>
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating"
+                >{{'user.firstName'|translate}}</ion-label
+              >
+              <ion-input type="text" formControlName="prenom" ngDefaultControl>
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating"
+                >{{'user.pseudo'|translate}}</ion-label
+              >
+              <ion-input type="text" formControlName="pseudo" ngDefaultControl>
+              </ion-input>
+            </ion-item>
+          </ion-card>
+
+          <ion-card>
+            <ion-card-header class="ion-no-padding">
+              <ion-list-header style="opacity: 0.7" color="secondary">
+                <ion-icon class="ion-margin-end" name="call"></ion-icon>
+                <ion-label class="ion-padding-vertical" style="font-size: 22px">
+                  {{'register.contacts'|translate}}
+                </ion-label>
+              </ion-list-header>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-card style="box-shadow: none">
+            <ion-item>
+              <ion-label position="floating"
+                >{{'user.email'|translate}}</ion-label
+              >
+              <ion-input type="email" formControlName="email" ngDefaultControl>
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating"
+                >{{'user.phone'|translate}}</ion-label
+              >
+              <ion-textarea
+                formControlName="tel"
+                ngDefaultControl
+              >
+              </ion-textarea>
+            </ion-item>
+          </ion-card>
+
+          <ion-card>
+            <ion-card-header class="ion-no-padding">
+              <ion-list-header style="opacity: 0.6" color="secondary">
+                <ion-icon class="ion-margin-end" name="lock-closed"></ion-icon>
+                <ion-label class="ion-padding-vertical" style="font-size: 22px">
+                  {{'register.security'|translate}}
+                </ion-label>
+              </ion-list-header>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-card style="box-shadow: none">
+            <ion-item>
+              <ion-label position="floating"
+                >{{'user.password'|translate}}</ion-label
+              >
+              <ion-input
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="password"
+                ngDefaultControl
+              ></ion-input>
+              <ion-icon
+                class="ion-margin-top"
+                slot="end"
+                [name]="showPassword ? 'eye' : 'eye-off'"
+                (click)="showPasswordFunction()"
+              >
+              </ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating"
+                >{{'changePassword.confirm'|translate}}</ion-label
+              >
+              <ion-input
+                [type]="showPasswordConfirm ? 'text' : 'password'"
+                formControlName="confirmPassword"
+                ngDefaultControl
+              ></ion-input>
+              <ion-icon
+                class="ion-margin-top"
+                slot="end"
+                [name]="showPasswordConfirm ? 'eye' : 'eye-off'"
+                (click)="showPasswordFunctionConfirm()"
+              ></ion-icon>
+            </ion-item>
+
+            <div class="text-center">
+              <ion-text
+                color="danger"
+                *ngIf="f.confirmPassword.hasError('mustMatch')"
+              >
+                {{'register.matching'|translate}}
+              </ion-text>
+            </div>
+
+            <ion-button
+              shape="round"
+              type="submit"
+              expand="full"
+              style="height: 50px; margin-top: 20px"
+              [disabled]="!registerForm.valid"
+            >
+              {{'register.finish'|translate}}
+            </ion-button>
+          </ion-card>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button fill="clear" routerLink="/login" shape="round" expand="full">
+    {{'register.back'|translate}}
+  </ion-button>
+</ion-content>

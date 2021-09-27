@@ -1,0 +1,20 @@
+<mat-expansion-panel *ngIf="customFields.length">
+  <mat-expansion-panel-header>
+    <ion-item lines="none">
+      <mat-icon slot="start">text_fields</mat-icon>
+      <ion-label>{{'customField.title'|translate}}</ion-label>
+    </ion-item>
+  </mat-expansion-panel-header>
+  <ng-container *ngFor="let field of customFields">
+    <ion-item *ngIf="field.value" lines="none">
+      <ion-label class="ion-text-wrap">
+        <ion-text>
+          <h3 style="margin: 0">{{field.name}}</h3>
+        </ion-text>
+        <ion-text color="medium">
+          <span>{{field.value}}</span>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ng-container>
+</mat-expansion-panel>

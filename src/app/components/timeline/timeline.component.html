@@ -1,0 +1,21 @@
+<ion-list-header style="margin-top: 15px">
+  <ion-label style="font-weight: 900; font-size: 20px">{{
+    "timelines.story" | translate
+  }}</ion-label>
+</ion-list-header>
+<ion-item
+  button
+  lines="none"
+  routerDirection="forward"
+  detail
+  (click)="openTimelineModal()"
+  style="
+    --background: #ffffff5e;
+    border-top: 1px solid #e6e4e4;
+    border-bottom: 1px solid #e6e4e4;
+  "
+>
+  <!-- <mat-icon class="ion-margin-end">timeline</mat-icon> -->
+  <ion-icon name="analytics-outline" slot="start" color="black"></ion-icon>
+  <ion-label>{{ "timelines.andEvent" | translate }} </ion-label>
+</ion-item>

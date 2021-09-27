@@ -1,0 +1,13 @@
+<ion-list-header style="margin-top: 15px">
+  <ion-label style="font-weight: 900; font-size: 20px">{{ title }}</ion-label>
+</ion-list-header>
+
+<app-card-slider
+  [loading]="loading"
+  [showName]="true"
+  cardType="rectangle"
+  [datas]="wLocations"
+  [filter]="parentId"
+  (clickAdd)="openAddLocationForm()"
+  (clickCard)="showLocationDetails($event)"
+></app-card-slider>

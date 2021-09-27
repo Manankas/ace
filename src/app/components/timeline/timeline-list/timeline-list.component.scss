@@ -1,0 +1,11 @@
+::ng-deep .mat-vertical-stepper-content {
+  visibility: visible !important;
+  height: 100% !important;
+}
+.stepper-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

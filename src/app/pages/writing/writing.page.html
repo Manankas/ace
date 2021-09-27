@@ -1,0 +1,48 @@
+<ion-header class="bg-ace">
+  <ion-toolbar style="--background: transparent; --border: none">
+    <ion-button
+      fill="clear"
+      (click)="onChangeLanguage()"
+      style="position: absolute"
+      slot="start"
+    >
+      <ion-icon
+        style="color: var(--ion-color-dark)"
+        name="language-outline"
+        color="secondary"
+      ></ion-icon>
+    </ion-button>
+    <ion-title
+      color="secondary"
+      class="ion-text-center ion-margin-end ion-color-dark"
+      >ACE</ion-title
+    >
+    <ion-button
+      fill="clear"
+      (click)="openAlarmConfig()"
+      style="position: absolute; right: 0"
+      slot="end"
+    >
+      <ion-icon color="secondary" name="alarm-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-ace">
+  <div style="height: calc(100vh - 112px); overflow: hidden">
+    <mat-tab-group
+      mat-align-tabs="center"
+      dynamicHeight
+      mat-stretch-tabs
+      [selectedIndex]="selected.value"
+      (selectedIndexChange)="selected.setValue($event)"
+    >
+      <mat-tab [label]="'project.plural'|translate" class="bg-ace">
+        <app-projects></app-projects>
+      </mat-tab>
+      <mat-tab [label]="'challenge.exercise'|translate">
+        <app-challenge></app-challenge>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ion-content>

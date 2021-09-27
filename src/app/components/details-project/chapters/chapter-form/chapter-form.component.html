@@ -1,0 +1,75 @@
+<div
+  style="
+    background: white;
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+  "
+>
+  <ion-item lines="none">
+    <ion-label class="ion-text-wrap" style="font-size: 18px">{{
+      data.title
+    }}</ion-label>
+    <ion-button
+      *ngIf="mode === 'update'"
+      (click)="remove()"
+      slot="end"
+      fill="clear"
+    >
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <form [formGroup]="chapitreFormGroup">
+    <mat-form-field style="width: 25%">
+      <mat-label>{{'chapter.number'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        [placeholder]="'chapter.pNumber'|translate"
+        formControlName="numChapitreCtrl"
+      />
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+      <mat-label>{{'chapter.title'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        [placeholder]="'chapter.title'|translate"
+        formControlName="titleCtrl"
+        required
+      />
+      <mat-error
+        [innerHTML]="'chapter.noTitle'|translate"
+        *ngIf="chapitreFormGroup.get('titleCtrl').hasError('required')"
+      >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+      <mat-label>{{'chapter.summary'|translate}}</mat-label>
+      <textarea
+        maxlength="8000"
+        matInput
+        [placeholder]="'chapter.summary'|translate"
+        formControlName="summaryCtrl"
+      ></textarea>
+    </mat-form-field>
+
+    <div class="flex" style="width: 100%; justify-content: flex-end">
+      <ion-button
+        (click)="closeBottomSheet($event)"
+        style="text-transform: none; height: 32px"
+        shape="round"
+      >
+        {{'buttons.cancel'|translate}}</ion-button
+      >
+
+      <ion-button
+        (click)="save()"
+        style="text-transform: none; height: 32px"
+        shape="round"
+      >{{'buttons.save'|translate}}</ion-button>
+    </div>
+  </form>
+</div>

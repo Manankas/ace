@@ -1,0 +1,46 @@
+<ion-item>
+  <ion-label class="ion-text-wrap">
+    <ion-text>
+      <h3 style="margin-bottom: 0;">{{data.name}}</h3>
+      <ion-label color="medium">{{('member.roles'|translate)[data.role]}}</ion-label>
+    </ion-text>
+  </ion-label>
+</ion-item>
+
+<ion-list lines="none">
+  <ion-list-header>
+    {{'collaboration.memberRole.title'|translate}}
+  </ion-list-header>
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      <ion-text>
+        <h3 style="margin-bottom: 0;">{{'collaboration.memberRole.read.title'|translate}}</h3>
+        <p>{{'collaboration.memberRole.read.content'|translate}}</p>
+      </ion-text>
+    </ion-label>
+    <mat-checkbox
+      color="primary"
+      (click)="$event.preventDefault()"
+      [checked]="true" slot="end">
+    </mat-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      <ion-text>
+        <h3 style="margin-bottom: 0;">{{'collaboration.memberRole.createEdit.title'|translate}}</h3>
+        <p>{{'collaboration.memberRole.createEdit.content'|translate}}</p>
+      </ion-text>
+    </ion-label>
+    <ion-checkbox color="warning" [(ngModel)]="checked" slot="end"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-button slot="end" (click)="cancel()" color="warning">
+      {{'buttons.cancel'|translate}}
+    </ion-button>
+    <ion-button slot="end" (click)="save()" color="warning">
+      {{'buttons.save'|translate}}
+    </ion-button>
+  </ion-item>
+</ion-list>

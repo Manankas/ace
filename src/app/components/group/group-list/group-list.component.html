@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <button slot="start" (click)="close()" mat-icon-button>
+      <mat-icon style="color: var(--ion-color-secondary)">arrow_back</mat-icon>
+    </button>
+    <ion-title>{{ "group.singular" | translate }}s</ion-title>
+    <button slot="end" (click)="openGroupTree()" mat-icon-button>
+      <mat-icon style="color: var(--ion-color-secondary)"
+        >account_tree</mat-icon
+      >
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none" style="background: transparent">
+    <ng-container *ngFor="let grp of groups; let i = index">
+      <ion-chip
+        button
+        (click)="groupDetailsModal(i)"
+        style="
+          height: 50px;
+          width: 100%;
+          border-radius: 50px;
+          margin: 5px 0px;
+          padding: 25px 20px;
+          background: white;
+        "
+        class="ion-margin-bottom"
+        outline
+      >
+        <span style="position: absolute; top: 4px; left: 15px">
+          <ngx-avatar
+            slot="start"
+            [round]="true"
+            [name]="grp.general.name"
+            size="40"
+          ></ngx-avatar>
+        </span>
+        <ion-label style="line-height: 20px; margin-left: 40px">{{
+          grp.general.name
+        }}</ion-label>
+      </ion-chip>
+    </ng-container>
+  </ion-list>
+
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    (click)="groupAddFormModal()"
+  >
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

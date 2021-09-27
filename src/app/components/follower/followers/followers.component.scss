@@ -1,0 +1,14 @@
+ion-spinner {
+  transform: scale(3);
+}
+.tab {
+  height: calc(100vh - 105px);
+  overflow-y: scroll;
+}
+h3 {
+  margin-bottom: 0;
+}
+
+ion-header {
+  position: initial !important;
+}

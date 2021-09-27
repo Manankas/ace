@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> {{'chat.private'|translate}} </ion-title>
+    <ion-button (click)="openSearchProject()" fill="clear" slot="end">
+      <ion-icon name="person-add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div
+    class="ion-text-center"
+    style="margin-top: 60%"
+    *ngIf="recentConvLoading; else list"
+  >
+    <ion-spinner color="warning" name="bubbles"></ion-spinner>
+  </div>
+  <ng-template #list>
+    <ion-list>
+      <ion-item
+        *ngFor="let conv of recentConv; let i = index"
+        (click)="openDiscussion(i)"
+        button
+      >
+        <ion-thumbnail slot="start">
+          <img [src]="conv.recipient?.avatar||'assets/male_user.svg'" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2 style="margin: 0">
+            {{conv.recipient.prenom}} {{conv.recipient.nom}}
+          </h2>
+          <p>
+            <span *ngIf="conv.senderId === userId">{{'you'|translate}} : </span
+            >{{conv.message}}
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+
+  <ion-infinite-scroll
+    threshold="100px"
+    (ionInfinite)="loadMoreRecentDiscussions($event)"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      [loadingText]="'chat.moreData'|translate"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

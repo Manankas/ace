@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 600; font-size: 16px">{{
+      "character.addForm.title" | translate
+    }}</ion-title>
+    <ion-button (click)="save()" slot="end" fill="clear">
+      <ion-icon name="save" color="secondary"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="width: 100%">
+  <ion-col class="">
+    <ion-row class="justify-center">
+      <ion-avatar class="avatar">
+        <img src="../../../../assets/icon/Avatar.svg" /> </ion-avatar
+    ></ion-row>
+    <ion-row
+      class="justify-center"
+      style="padding: 0 30px; text-align: center; color: grey"
+      >{{ "character.addForm.explain" | translate }}</ion-row
+    >
+  </ion-col>
+
+  <ion-card>
+    <form [formGroup]="addFormGroup">
+      <ion-item lines="none">
+        <mat-form-field style="width: 100%">
+          <mat-label>{{ "character.general.name" | translate }}</mat-label>
+          <input
+            matInput
+            [placeholder]="'character.addForm.pName' | translate"
+            formControlName="nameCtrl"
+            required
+          />
+        </mat-form-field>
+      </ion-item>
+      <ion-item lines="none">
+        <mat-form-field style="width: 100%">
+          <mat-label>{{ "character.general.description" }}</mat-label>
+          <input
+            matInput
+            [placeholder]="'character.addForm.pDescription' | translate"
+            formControlName="descriptionCtrl"
+          />
+        </mat-form-field>
+      </ion-item>
+    </form>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,201 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>{{ "statistic.title" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg-ace">
+  <ion-card>
+    <ion-card-header class="ion-no-padding">
+      <ion-list-header color="tertiary" style="color: black; font-weight: 500">
+        {{ "statistic.description" | translate }}
+      </ion-list-header>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content
+      class="ion-no-padding"
+      style="
+        display: grid;
+        grid-template-columns: calc(100% / 2) calc(100% / 2);
+      "
+    >
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "item.general.name" | translate }}</h3>
+          <p>{{ project.name }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "statistic.creation" | translate }}</h3>
+          <p>{{ toDate(project.createdAt) }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "statistic.size" | translate }}</h3>
+          <p>{{ project.size }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "project.startAt" | translate }}</h3>
+          <p>{{ toDate(project.startAt) }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "statistic.end" | translate }}</h3>
+          <p>{{ toDate(project.endAt) }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content class="ion-no-padding">
+      <ion-item lines="none" color="warning">
+        <ion-label style="color: white">
+          {{ "statistic.duration" | translate }}: {{ estimatedDuration }}
+          {{ "alarm.day" | translate }}s
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none" color="warning">
+        <ion-label style="color: white">
+          {{ "statistic.criticMean" | translate }} :{{
+            calcMean(project.size, estimatedDuration)
+          }}
+          {{ ("project.sizeTypes" | translate)[project.sizeType] }}/{{
+            "alarm.day" | translate
+          }}
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header class="ion-no-padding">
+      <ion-list-header color="tertiary" style="color: black; font-weight: 500">
+        {{ "entities.chapters" | translate }}
+      </ion-list-header>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content
+      class="ion-no-padding"
+      style="
+        display: grid;
+        grid-template-columns: calc(100% / 2) calc(100% / 2);
+      "
+    >
+      <ion-item>
+        <ion-label>
+          <h3>{{ "statistic.number" | translate }}</h3>
+          <p>{{ chapters.length }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h3>{{ "statistic.length" | translate }}</h3>
+          <p>
+            {{ calcMean(countFinished, chapters.length || 1) }}
+            {{ ("project.sizeTypes" | translate)[project.sizeType] }}
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header class="ion-no-padding">
+      <ion-list-header color="tertiary" style="color: black; font-weight: 500">
+        {{ "statistic.today" | translate }} : {{ toDate(today) }}
+      </ion-list-header>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content class="ion-no-padding">
+      <canvas
+        baseChart
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType"
+        [plugins]="chartPlugins"
+        [colors]="lineChart"
+      >
+      </canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="card-slide">
+    <mat-slider
+      thumbLabel
+      [displayWith]="sliderLabel"
+      tickInterval="auto"
+      min="1"
+      [max]="project.size"
+      step="1"
+      [value]="countFinished"
+    ></mat-slider>
+  </div>
+
+  <ion-card>
+    <ion-card-content
+      class="ion-no-padding"
+      style="
+        display: grid;
+        grid-template-columns: calc(100% / 2) calc(100% / 2);
+      "
+    >
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "statistic.workDuration" | translate }}</h3>
+          <p>{{ businessDays }} {{ "alarm.day" | translate }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h3>
+            {{
+              "statistic.written"
+                | translate
+                  : {
+                      sizeType: ("project.sizeTypes" | translate)[
+                        project.sizeType
+                      ]
+                    }
+            }}
+          </h3>
+          <p>{{ countFinished }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "statistic.bestDay" | translate }}</h3>
+          <p>
+            {{ bestSeance.day }}
+            ({{ bestSeance.wordCount }}
+            {{ ("project.sizeTypes" | translate)[project.sizeType] }})
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h3>{{ "statistic.dailyMean" | translate }} :</h3>
+          <p>
+            {{ calcMean(countFinished, businessDays) }}
+            {{ ("project.sizeTypes" | translate)[project.sizeType] }}/jours
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

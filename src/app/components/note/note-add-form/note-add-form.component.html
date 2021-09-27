@@ -1,0 +1,43 @@
+<div
+  style="
+    background: white;
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+  "
+>
+  <form [formGroup]="noteFormGroup">
+    <mat-form-field style="width: 100%">
+      <mat-label>{{'note.label'|translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        [placeholder]="'note.label'|translate"
+        formControlName="labelCtrl"
+        required
+      />
+    </mat-form-field>
+
+    <mat-radio-group
+      aria-label="Select an option"
+      class="flex"
+      formControlName="selectCtrl"
+    >
+      <mat-radio-button [value]="false" labelPosition="before">
+        <mat-icon aria-hidden="true">insert_drive_file</mat-icon>
+      </mat-radio-button>
+      <div
+        style="height: 25px; border: 1px solid #0000008a; margin: 0 15px"
+      ></div>
+      <mat-radio-button [value]="true" labelPosition="before">
+        <mat-icon aria-hidden="true">folder_open</mat-icon>
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <div class="flex" style="width: 100%; justify-content: flex-end">
+      <ion-button (click)="dismiss()" style="text-transform: none; height: 32px" shape="round">
+        {{'buttons.save'|translate}}</ion-button
+      >
+    </div>
+  </form>
+</div>

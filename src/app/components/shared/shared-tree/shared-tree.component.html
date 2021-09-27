@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <button (click)="close()" mat-icon-button slot="start">
+      <mat-icon>close</mat-icon>
+    </button>
+    <ion-title class="ion-padding">{{
+      title || ("quickNavigation" | translate)
+    }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding-top ion-padding-start">
+  <mat-tree
+    style="background: transparent"
+    [dataSource]="dataSource"
+    [treeControl]="treeControl"
+    class="example-tree"
+  >
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+      <div
+        matRipple
+        [matRippleCentered]="true"
+        style="width: 100%; padding-left: 5px"
+        (click)="dismiss(node)"
+      >
+        {{ node?.general?.name || node.name }}
+      </div>
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <div class="mat-tree-node">
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'Toggle ' + node.id"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        <div
+          matRipple
+          [matRippleCentered]="true"
+          style="width: 100%; padding-left: 5px"
+          (click)="dismiss(node)"
+        >
+          {{ node?.general?.name || node.name }}
+        </div>
+      </div>
+      <div
+        [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+        role="group"
+      >
+        <ng-container matTreeNodeOutlet></ng-container>
+      </div>
+    </mat-nested-tree-node>
+  </mat-tree>
+</ion-content>

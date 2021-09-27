@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'chat.group'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div
+  style="height: calc(100vh - 161px); position: relative"
+  class="flex column"
+>
+  <ion-progress-bar
+    *ngIf="loading"
+    [buffer]="1"
+    type="indeterminate"
+  ></ion-progress-bar>
+
+  <div
+    scrollable
+    style="overflow-y: auto; overflow-x: hidden; flex-grow: 1"
+    class="flex column-reverse"
+    (scrollPosition)="scrollHandler($event)"
+  >
+    <app-discussion-item
+      *ngFor="let message of messages"
+      [class]="
+        message.convId[0] === userId ? 'right-animation ' : 'left-animation '
+      "
+      [senderName]="getSenderName(message.convId[0].toString())"
+      class="flex column-reverse item"
+      [userId]="userId"
+      [message]="message"
+    ></app-discussion-item>
+  </div>
+
+  <app-send-message
+    [messageType]="1"
+    [receiverId]="receiverId"
+    (submit)="sendMessage($event)"
+  ></app-send-message>
+</div>

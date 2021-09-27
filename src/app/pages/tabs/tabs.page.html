@@ -1,0 +1,33 @@
+<ion-tabs (ionTabsWillChange)="onChange($event)">
+  <ion-tab-bar slot="bottom" style="--border: none">
+    <ion-tab-button
+      style="--ripple-color: transparent; background-color: transparent"
+      *ngFor="let t of tabs"
+      [tab]="t.tab"
+    >
+      <ion-chip
+        *ngIf="t.tab === selectedTab; else notSelected"
+        mode="ios"
+        style="
+          max-width: 0;
+          transition: all 0.2s;
+          color: var(--ion-color-tertiary-shade);
+          background: var(--ion-color-tertiary-tint);
+        "
+        [style]="t.tab === selectedTab ? 'max-width: 150px' : ''"
+      >
+        <ion-icon
+          style="color: var(--ion-color-tertiary-shade)"
+          [name]="t.icon"
+        ></ion-icon>
+        <ion-label>{{t.tab | translate}}</ion-label>
+      </ion-chip>
+      <ng-template #notSelected>
+        <ion-icon
+          style="color: var(--ion-color-dark)"
+          [name]="t.icon"
+        ></ion-icon>
+      </ng-template>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

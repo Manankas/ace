@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="close()" slot="start" fill="clear" color="secondary">
+      <ion-icon name="arrow-back" class="ion-margin-end"></ion-icon>
+    </ion-button>
+    <ion-title>{{ "following.followers" | translate }}</ion-title>
+    <ion-button
+      fill="clear"
+      slot="end"
+      (click)="searchUserModal()"
+      color="secondary"
+    >
+      <ion-icon name="person-add"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="height: calc(100vh - 112px); overflow: hidden">
+    <div
+      class="ion-text-center"
+      style="margin-top: 60%"
+      *ngIf="loading; else list"
+    >
+      <ion-spinner color="warning" name="bubbles"></ion-spinner>
+    </div>
+    <ng-template #list>
+      <mat-tab-group mat-align-tabs="center" dynamicHeight mat-stretch-tabs>
+        <mat-tab [label]="'following.my' | translate">
+          <div class="tab ion-padding-vertical">
+            <ion-item (click)="followRequestModal()" lines="none" button>
+              <ion-icon slot="start" name="person-add"></ion-icon>
+              <ion-label>{{ "following.request" | translate }}</ion-label>
+              <ion-icon name=""></ion-icon>
+              <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+            </ion-item>
+            <ion-list-header style="font-size: 18px; font-weight: 600">
+              {{ "following.people" | translate }}
+            </ion-list-header>
+            <ion-list *ngFor="let follower of F.followers">
+              <ion-item (click)="openFollowModal(follower)" button>
+                <ion-avatar slot="start">
+                  <img [src]="follower.avatar || 'assets/male_user.svg'" />
+                </ion-avatar>
+                <ion-label class="ion-text-wrap">
+                  <h3>{{ follower.nom }} {{ follower.prenom }}</h3>
+                  <ion-text color="medium">{{ follower.email }}</ion-text>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+            <!--scroll-->
+            <ion-infinite-scroll
+              threshold="50px"
+              (ionInfinite)="findMoreF($event)"
+            >
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                [loadingText]="'chat.moreData' | translate"
+                style="min-height: 10px"
+              >
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="'following.myFollowing' | translate">
+          <div class="tab ion-padding-vertical">
+            <ion-list *ngFor="let follow of F.following">
+              <ion-item (click)="openFollowModal(follow)" button>
+                <ion-avatar slot="start">
+                  <img [src]="follow.avatar || 'assets/male_user.svg'" />
+                </ion-avatar>
+                <ion-label class="ion-text-wrap">
+                  <h3>{{ follow.nom }} {{ follow.prenom }}</h3>
+                  <ion-text color="medium">{{ follow.email }}</ion-text>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+            <!--scroll-->
+            <ion-infinite-scroll
+              threshold="50px"
+              (ionInfinite)="findMoreF($event)"
+            >
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                [loadingText]="'chat.moreData' | translate"
+                style="min-height: 10px"
+              >
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </ng-template>
+  </div>
+</ion-content>

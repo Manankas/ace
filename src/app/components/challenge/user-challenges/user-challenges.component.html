@@ -1,0 +1,59 @@
+
+<ion-list lines="none">
+  <ion-list-header>
+    <h1>{{'challenge.exercise'|translate}}</h1>
+  </ion-list-header>
+
+  <span *ngIf="!loading">
+      <ion-item
+        *ngFor="let challenge of myChallenges; let i = index"
+        button lines="none"
+        (click)="openParticipationDetails(i)"
+      >
+        <ion-avatar
+          slot="start"
+          style="--border-radius: 10px; width: 70px; height: 50px"
+        >
+          <img
+            style="width: 100%; height: 100%; object-fit: cover"
+            [src]="challenge.avatar||'assets/images/book.jpg'"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h3 style="margin: 0">{{challenge.title}}</h3>
+          <div class="content-fade">{{challenge.content}}</div>
+        </ion-label>
+      </ion-item>
+    </span>
+
+  <span *ngIf="loading">
+      <ion-item *ngFor="let challenge of [1,2,3,4,5,6]" button lines="none">
+        <ion-avatar
+          slot="start"
+          style="--border-radius: 10px; width: 70px; height: 50px"
+        >
+          <ion-skeleton-text
+            animated
+            style="width: 100%; height: 100%"
+          ></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <ion-skeleton-text
+            animated
+            style="width: 50%; height: 24px"
+          ></ion-skeleton-text>
+          <ion-skeleton-text
+            animated
+            style="width: 100%; height: 24px"
+          ></ion-skeleton-text>
+        </ion-label>
+      </ion-item>
+    </span>
+</ion-list>
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreChallenges($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    [loadingText]="'chat.moreData'|translate"
+  >
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

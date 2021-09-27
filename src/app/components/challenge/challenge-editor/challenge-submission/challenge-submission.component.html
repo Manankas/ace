@@ -1,0 +1,28 @@
+<ion-list>
+  <ion-list-header>{{'challenge.submission.title'|translate}}</ion-list-header>
+  <ion-item>
+    <ion-label position="floating">{{'challenge.submission.subtitle'|translate}}</ion-label>
+    <ion-input [(ngModel)]="data.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-text>
+        <h3 style="margin-bottom: 0;">{{'challenge.submission.private'|translate}}</h3>
+        <ion-label color="medium" class="ion-text-wrap">
+          {{'challenge.submission.body'|translate}}
+        </ion-label>
+      </ion-text>
+    </ion-label>
+    <ion-checkbox [(ngModel)]="data.finished" color="warning" slot="end"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-button slot="end" (click)="cancel()" color="warning">
+      {{'buttons.cancel'|translate}}
+    </ion-button>
+    <ion-button slot="end" (click)="save()" color="warning">
+      {{'buttons.save'|translate}}
+    </ion-button>
+  </ion-item>
+</ion-list>

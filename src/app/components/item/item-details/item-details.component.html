@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      name="arrow-back"
+      slot="start"
+      color="secondary"
+      class="ion-margin-start"
+      (click)="close()"
+    >
+    </ion-icon>
+    <ion-icon
+      name="pencil"
+      color="secondary"
+      slot="end"
+      class="ion-margin-end"
+      (click)="presentEditionModal()"
+    >
+    </ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none" style="--background: transparent">
+    <ion-avatar square style="width: 85px; height: 85px" slot="start">
+      <img [src]="item.avatar || 'assets/icon/Avatar.svg'" />
+    </ion-avatar>
+    <ion-label style="font-weight: 900">{{ item.general.name }}</ion-label>
+  </ion-item>
+
+  <ion-item lines="none" style="--background: transparent">
+    <h1 style="font-weight: 900; font-size: 20px">
+      {{ "image" | translate }}s
+    </h1>
+  </ion-item>
+
+  <app-image-slider
+    *ngIf="isEntered"
+    [srcImages]="item.images"
+    [collectionId]="item.id"
+    collectionPath="items"
+    [projectId]="projectId"
+  ></app-image-slider>
+
+  <ion-card>
+    <ion-item lines="none">
+      <h1 style="font-weight: 900; font-size: 20px">
+        {{ "information" | translate }}s
+      </h1>
+    </ion-item>
+
+    <mat-accordion displayMode="flat" panelState="collapsed">
+      <mat-expansion-panel *ngFor="let catKey of categoryKeys">
+        <mat-expansion-panel-header>
+          <ion-item lines="none">
+            <ion-icon [name]="icons[catKey]" slot="start"> </ion-icon>
+            {{ "item." + catKey + ".title" | translate }}
+          </ion-item>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let key of getKeys(item[catKey])">
+          <ion-item lines="none" *ngIf="item[catKey][key]">
+            <ion-label class="ion-text-wrap">
+              <ion-text>
+                <h3 style="margin: 0">
+                  {{ "species." + catKey + "." + key | translate }}
+                </h3>
+              </ion-text>
+              <ion-text color="medium">
+                <span>{{ item[catKey][key] }}</span>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+        </ng-container>
+      </mat-expansion-panel>
+      <!--custom fields-->
+      <app-custom-field-list
+        [customFields]="item.customFields"
+      ></app-custom-field-list>
+    </mat-accordion>
+  </ion-card>
+</ion-content>

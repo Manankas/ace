@@ -1,0 +1,53 @@
+<div style="height: calc(100vh - 160px); overflow-y: scroll">
+  <app-project-archive [projects]="projects"></app-project-archive>
+  <div
+    class="ion-text-center ion-padding flex justify-center"
+    *ngIf="loading[0]; else ownPro"
+    style="margin-top: 10px; height: 150px"
+  >
+    <ion-spinner color="primary" name="bubbles"></ion-spinner>
+  </div>
+  <ng-template #ownPro>
+    <ion-list style="background: transparent">
+      <app-my-projects [projects]="projects"> </app-my-projects>
+    </ion-list>
+  </ng-template>
+
+  <ion-list-header
+    style="
+      --background: #ffffff5e;
+      border-top: 1px solid #e6e4e4;
+      border-bottom: 1px solid #e6e4e4;
+    "
+  >
+    <ion-label style="font-weight: 900; font-size: 20px">
+      {{ "collaboration.my" | translate }}
+    </ion-label>
+
+    <ion-avatar (click)="openRequestCodeModal()" class="list-header-avatar">
+      <ion-icon
+        name="keypad-outline"
+        style="font-size: 24px"
+        color="secondary"
+      ></ion-icon>
+    </ion-avatar>
+  </ion-list-header>
+
+  <div
+    class="ion-text-center flex justify-center"
+    style="margin-top: 20%; height: 150px"
+    *ngIf="loading[1]; else comProjects"
+  >
+    <ion-spinner color="primary" name="bubbles"></ion-spinner>
+  </div>
+  <ng-template #comProjects>
+    <ion-list style="background: transparent">
+      <app-my-projects [projects]="commonProjects"> </app-my-projects>
+    </ion-list>
+  </ng-template>
+</div>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="primary" (click)="addProjectModal()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

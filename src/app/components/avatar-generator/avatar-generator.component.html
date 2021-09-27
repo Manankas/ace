@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <ion-title style="font-weight: 600; font-size: 16px"
+      >Details du personnage</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="full-width column" style="height: calc(100vh - 56px)">
+    <div class="flex justify-center" style="height: 200px">
+      <div style="width: 200px; height: 200px" [innerHTML]="svg"></div>
+    </div>
+
+    <ion-list>
+      <ion-item *ngFor="let item of avatarItems">
+        <ion-label>{{ getKeys(item)[0] }}</ion-label>
+        <ion-select
+          [value]="avatarValues[getKeys(item)[0]]"
+          (ionChange)="onSelectChange(getKeys(item)[0], $event)"
+        >
+          <ion-select-option
+            *ngFor="let option of item[getKeys(item)[0]]; let i = index"
+            [value]="i"
+          >
+            {{ option }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

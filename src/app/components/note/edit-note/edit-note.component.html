@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <button mat-icon-button slot="start" (click)="close()">
+      <mat-icon style="color: var(--ion-color-secondary)">arrow_back</mat-icon>
+    </button>
+    <ion-title>{{ "note.edit" | translate }}</ion-title>
+    <button (click)="deleteConfirm()" mat-icon-button slot="end">
+      <mat-icon style="color: var(--ion-color-secondary)">delete</mat-icon>
+    </button>
+    <button (click)="dismiss()" mat-icon-button slot="end">
+      <mat-icon style="color: var(--ion-color-secondary)">save</mat-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <mat-form-field style="width: 100%">
+    <mat-label>{{ "note.name" | translate }}</mat-label>
+    <input
+      matInput
+      [(ngModel)]="note.name"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </mat-form-field>
+</ion-content>
